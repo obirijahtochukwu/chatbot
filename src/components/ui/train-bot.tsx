@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Buttons } from "./buttons";
 import { useSelector } from "react-redux";
+import TestModel from "./test-model";
 
 export default function TrainBot({
   trainBot,
@@ -10,6 +11,7 @@ export default function TrainBot({
   setTrainBot: React.Dispatch<boolean>;
 }) {
   const { chatbot } = useSelector((state: any) => state.context);
+  const [testModel, setTestModel] = useState(false);
 
   const table = [
     "User",
@@ -60,7 +62,16 @@ export default function TrainBot({
             Train History
           </div>
           {["Reload model", "Test model"].map((name, idx) => (
-            <Buttons.primary key={idx} title={name} />
+            <Buttons.primary
+              key={idx}
+              onClick={() => idx == 1 && setTestModel(true)}
+              classname="relative"
+              title={name}
+            >
+              {idx == 1 && (
+                <TestModel testModel={testModel} setTestModel={setTestModel} />
+              )}
+            </Buttons.primary>
           ))}
         </div>
         <main className="w-full h-[395px]  bg-neutral py-2 px-4">
@@ -117,6 +128,7 @@ export const TrainBotDialog = ({
   trainBot?: boolean;
   setTrainBot?: React.Dispatch<boolean>;
 }) => {
+  const [testModel, setTestModel] = useState(false);
   const { chatbot } = useSelector((state: any) => state.context);
 
   const table = [
@@ -155,7 +167,16 @@ export const TrainBotDialog = ({
           Train History
         </div>
         {["Reload model", "Test model"].map((name, idx) => (
-          <Buttons.primary key={idx} title={name} />
+          <Buttons.primary
+            key={idx}
+            onClick={() => idx == 1 && setTestModel(true)}
+            classname="relative"
+            title={name}
+          >
+            {idx == 1 && (
+              <TestModel testModel={testModel} setTestModel={setTestModel} />
+            )}
+          </Buttons.primary>
         ))}
       </div>
       <main className="w-full min-h-[395px]  bg-neutral py-2 px-4">

@@ -14,6 +14,7 @@ export const Buttons = {
     title,
     icon,
     classname,
+    children,
     checkbox,
     ...props
   }: {
@@ -22,27 +23,30 @@ export const Buttons = {
     classname?: string;
     icon?: React.HTMLAttributes<SVGElement> | any;
   } & button) => (
-    <button
-      type="button"
-      {...props}
-      className={`w-fit h-8 p-[7px] bg-secondary bg-opacity-10 cursor-pointer justify-center items-center text-secondary font-mulish gap-2.5 flex text-[15px] ${classname}`}
-    >
-      {title}
-      {checkbox ? (
-        <div className="relative">
-          <input
-            type="checkbox"
-            checked
-            // checked={isChecked}
-            // onChange={handleCheckboxChange}
-            className="sr-only"
-          />
-          <div className="h-3 w-7 rounded-full bg-[#E5E7EB] shadow-inner"></div>
-          <div className="dot shadow-switch-1 absolute left-0 -top-1 h-4 w-4 rounded-full bg-white transition"></div>
-        </div>
-      ) : icon ? (
-        <>{icon}</>
-      ) : null}
-    </button>
+    <div className="relative">
+      <button
+        type="button"
+        {...props}
+        className={`w-fit h-8 p-[7px] bg-secondary bg-opacity-10 cursor-pointer justify-center items-center text-secondary font-mulish gap-2.5 flex text-[15px] ${classname}`}
+      >
+        {title}
+        {checkbox ? (
+          <div className="relative">
+            <input
+              type="checkbox"
+              checked
+              // checked={isChecked}
+              // onChange={handleCheckboxChange}
+              className="sr-only"
+            />
+            <div className="h-3 w-7 rounded-full bg-[#E5E7EB] shadow-inner"></div>
+            <div className="dot shadow-switch-1 absolute left-0 -top-1 h-4 w-4 rounded-full bg-white transition"></div>
+          </div>
+        ) : icon ? (
+          <>{icon}</>
+        ) : null}
+      </button>
+      <>{children}</>
+    </div>
   ),
 };

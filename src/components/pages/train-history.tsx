@@ -22,7 +22,7 @@ export default function TrainHistory() {
         // onClick={() => setTrainBot(true)}
         title="Train Bot"
       />
-      <TrainBotDialog/>
+      <TrainBotDialog />
     </main>
   );
 }
