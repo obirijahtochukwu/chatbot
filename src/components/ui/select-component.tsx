@@ -1,3 +1,4 @@
+import { components } from "@/utils/constants";
 import { component } from "@/utils/types";
 import React from "react";
 interface types {
@@ -11,14 +12,6 @@ export default function SelectComponent({
   component: types;
   setComponent: React.Dispatch<types>;
 }) {
-  const components: component[] = [
-    { name: "Component A", value: "5" },
-    { name: "Component B", value: "2" },
-    { name: "Component C", value: "4" },
-    { name: "Component D", value: "5" },
-    { name: "Component E", value: "5" },
-  ];
-
   return (
     <div className={component.state ? "flex flex-col gap-3" : "hidden"}>
       <div className="font-inter text-primary font-medium text-[26px]">

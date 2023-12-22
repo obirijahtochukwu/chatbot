@@ -30,7 +30,7 @@ export default function Sidebar() {
       disable: true,
     },
     {
-      icon: <Icons.story color={url.includes("/story") ? "#fff" : "#000"} />,
+      icon: <Icons.story color={url == `/story/${params}` ? "#fff" : "#000"} />,
       title: "story",
       path: `/story/${params}`,
       disable: showTab ? true : false,
@@ -40,15 +40,17 @@ export default function Sidebar() {
         <Icons.component color={url.includes("/components") ? "#fff" : ""} />
       ),
       title: "components",
-      path: "/components",
+      path: `/story/${params}/components`,
       disable: showTab ? true : false,
     },
     {
       icon: (
-        <Icons.history color={url.includes("/train-history") ? "#fff" : ""} />
+        <Icons.history
+          color={url == `/story/${params}/train-history` ? "#fff" : ""}
+        />
       ),
       title: "Train history",
-      path: "/train-history",
+      path: `/story/${params}/train-history`,
       disable: showTab ? true : false,
     },
     {

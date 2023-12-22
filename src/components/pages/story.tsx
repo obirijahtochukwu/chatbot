@@ -8,10 +8,13 @@ import BotUser from "../ui/bot-user";
 import { addActivePage } from "@/redux/slice";
 import AddUser from "../ui/add-user";
 import AddBot from "../ui/add-bot";
+import TrainBot from "../ui/train-bot";
+import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 
 export default function Story() {
-  const params = useParams();
+  const params: Params = useParams();
   const dispatch = useDispatch();
+  const [trainBot, setTrainBot] = useState(false);
   const [activeTab, setActiveTab] = useState("Flow");
   const { chatbot } = useSelector((state: any) => state.context);
   const story = chatbot?.stories?.find(
@@ -21,6 +24,8 @@ export default function Story() {
   useEffect(() => {
     localStorage.setItem("story_url", params?.slug);
   }, []);
+
+  const props = { trainBot, setTrainBot };
 
   return (
     <article className="flex justify-between">
@@ -53,7 +58,8 @@ export default function Story() {
           <Install />
         )}
       </main>
-      <Buttons.side title="Train Bot" />
+      <Buttons.side onClick={() => setTrainBot(true)} title="Train Bot" />
+      <TrainBot {...props} />
     </article>
   );
 }
@@ -171,20 +177,7 @@ const App = ({
 
         <div className="flex mt-[37px] items-center justify-between">
           {name} installation
-          <div className="w-fit h-8 p-[7px] bg-secondary bg-opacity-10 cursor-pointer justify-center items-center text-secondary font-mulish gap-2.5 flex text-[15px]">
-            Connect
-            <div className="relative">
-              <input
-                type="checkbox"
-                checked
-                // checked={isChecked}
-                // onChange={handleCheckboxChange}
-                className="sr-only"
-              />
-              <div className="h-3 w-7 rounded-full bg-[#E5E7EB] shadow-inner"></div>
-              <div className="dot shadow-switch-1 absolute left-0 -top-1 h-4 w-4 rounded-full bg-white transition"></div>
-            </div>
-          </div>
+          <Buttons.primary checkbox={true} title="connect" />
         </div>
       </section>
     </main>
