@@ -17,7 +17,7 @@ export default function Profile() {
     accept: {
       "image/*": [],
     },
-    onDrop: (acceptedFiles: FileInfo[]) => {
+    onDrop: (acceptedFiles) => {
       if (acceptedFiles.length > 1)
         alert("You cannot bulk upload more than 10 files at a time");
       setImg(acceptedFiles[0]);
@@ -58,7 +58,7 @@ export default function Profile() {
             </div>
           ))}
         </section>
-        <div className="w-fit px-8 mt-10 py-3 bg-red-600 bg-opacity-10 justify-center items-center flex font-mulish text-red-600 text-[15px] font-semibold">
+        <div className="w-fit px-8 mt-10 py-3 bg-red-600 bg-opacity-10 justify-center items-center flex font-mulish text-red-600 text-md font-semibold">
           Delete Account
         </div>
       </main>

@@ -70,7 +70,7 @@ const SelectComponent = ({
         <div className="flex items-center gap-3">
           <div
             onClick={() => setComponent(name)}
-            className={`font-inter rounded-[200px] w-[317px] items-center flex justify-between duration-150 font-normal text-[15px] px-2.5 cursor-pointer ${
+            className={`font-inter rounded-[200px] w-[317px] items-center flex justify-between duration-150 font-normal text-md px-2.5 cursor-pointer ${
               component == name
                 ? "text-white py-3 bg-secondary h-[38px]"
                 : "text-primary"

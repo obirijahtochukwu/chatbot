@@ -3,18 +3,19 @@ import React, { useState } from "react";
 import { GeneratePhrases } from "./generate-phrases";
 import SelectComponent from "./select-component";
 import { Buttons } from "./buttons";
+import { component_state } from "@/utils/types";
 
 export default function AddUser({
   model,
   setModel,
+  component,
+  setComponent,
 }: {
   model: string;
   setModel: React.Dispatch<string>;
+  component: component_state;
+  setComponent: React.Dispatch<component_state>;
 }) {
-  const [component, setComponent] = useState({
-    state: false,
-    value: "Component A",
-  });
   const [msgs, setMsgs] = useState([
     "What time is the next event?",
     "When will be the next event?",
@@ -33,13 +34,13 @@ export default function AddUser({
       >
         <div
           onClick={() => setModel("")}
-          className="text-primary cursor-pointer text-[15px] ml-auto relative right-[-16px]"
+          className="text-primary cursor-pointer text-md ml-auto relative right-[-16px]"
         >
           X
         </div>
         <div className="w-[100px] flex justify-center items-center mx-auto flex-col bg-neutral h-[100px] gap-1">
           <img className="w-11 h-11" src={"/media/story/user icon.svg"} />
-          <div className="text-primary capitalize text-[15px] font-mulish leading-[18px]">
+          <div className="text-primary capitalize text-md font-mulish leading-[18px]">
             user
           </div>
         </div>
@@ -53,7 +54,7 @@ export default function AddUser({
             />
             <div className="flex gap-3 flex-col">
               {component.state || (
-                <div className="text-primary text-[15px] font-normal font-inter leading-[18px] mt-3">
+                <div className="text-primary text-md font-normal font-inter leading-[18px] mt-3">
                   {component?.value}
                 </div>
               )}
@@ -62,7 +63,7 @@ export default function AddUser({
                   placeholder="User message"
                   value={inputVal}
                   onChange={(e) => setInputVal(e.target.value)}
-                  className="w-[341px] focus:outline-none text-primary text-opacity-50 text-[15px] flex items-center pl-6 h-8 bg-neutral font-mulish"
+                  className="w-[341px] focus:outline-none text-primary text-opacity-50 text-md flex items-center pl-6 h-8 bg-neutral font-mulish"
                 />
                 <button
                   disabled={!inputVal}
@@ -72,7 +73,7 @@ export default function AddUser({
                       setInputVal("");
                     }
                   }}
-                  className="w-[49px] h-8 p-[7px] bg-secondary bg-opacity-10 justify-center items-center text-secondary font-mulish gap-2.5 flex text-[15px] border-none"
+                  className="w-[49px] h-8 p-[7px] bg-secondary bg-opacity-10 justify-center items-center text-secondary font-mulish gap-2.5 flex text-md border-none"
                 >
                   Save
                 </button>
@@ -88,7 +89,7 @@ export default function AddUser({
                         className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
                       />
 
-                      <label className="font-mulish leading-[18px] font-normal text-primary text-[15px] first-letter:uppercase">
+                      <label className="font-mulish leading-[18px] font-normal text-primary text-md first-letter:uppercase">
                         {text}
                       </label>
                     </div>
@@ -107,7 +108,7 @@ export default function AddUser({
                           ? setGenerate(true)
                           : null
                       }
-                      className={`w-fit h-8 p-[7px] justify-center items-center flex text-[15px] font-mulish cursor-pointer ${
+                      className={`w-fit h-8 p-[7px] justify-center items-center flex text-md font-mulish cursor-pointer ${
                         id == 2
                           ? "text-red-600 bg-rose-100"
                           : component.state && id == 1
@@ -151,13 +152,13 @@ export const AddUserDialog = ({
     >
       <div
         onClick={() => setModel("")}
-        className="text-primary cursor-pointer text-[15px] ml-auto relative right-[-16px]"
+        className="text-primary cursor-pointer text-md ml-auto relative right-[-16px]"
       >
         X
       </div>
       <div className="w-[100px] flex justify-center items-center mx-auto flex-col bg-neutral h-[100px] gap-1">
         <img className="w-11 h-11" src={"/media/story/user icon.svg"} />
-        <div className="text-primary capitalize text-[15px] font-mulish leading-[18px]">
+        <div className="text-primary capitalize text-md font-mulish leading-[18px]">
           user
         </div>
       </div>
@@ -171,7 +172,7 @@ export const AddUserDialog = ({
                 placeholder="User message"
                 value={inputVal}
                 onChange={(e) => setInputVal(e.target.value)}
-                className="w-[341px] focus:outline-none text-primary text-opacity-50 text-[15px] flex items-center pl-6 h-8 bg-neutral font-mulish"
+                className="w-[341px] focus:outline-none text-primary text-opacity-50 text-md flex items-center pl-6 h-8 bg-neutral font-mulish"
               />
               <Buttons.primary
                 disabled={!inputVal}
@@ -195,7 +196,7 @@ export const AddUserDialog = ({
                       className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
                     />
 
-                    <label className="font-mulish leading-[18px] font-normal text-primary text-[15px] first-letter:uppercase">
+                    <label className="font-mulish leading-[18px] font-normal text-primary text-md first-letter:uppercase">
                       {text}
                     </label>
                   </div>

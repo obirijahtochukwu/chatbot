@@ -27,7 +27,7 @@ export const Buttons = {
       <button
         type="button"
         {...props}
-        className={`w-fit h-8 p-[7px] bg-secondary bg-opacity-10 cursor-pointer justify-center items-center text-secondary font-mulish gap-2.5 flex text-[15px] ${classname}`}
+        className={`w-fit h-8 p-[7px] bg-secondary bg-opacity-10 cursor-pointer justify-center items-center text-secondary font-mulish gap-2.5 flex text-md ${classname}`}
       >
         {title}
         {checkbox ? (

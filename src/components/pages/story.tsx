@@ -67,26 +67,30 @@ export default function Story() {
 const Interaction = ({ name, messages }: interaction) => {
   const [newMessage, setNewMessage] = useState(false);
   const [model, setModel] = useState("");
+  const [component, setComponent] = useState({
+    state: false,
+    value: "Component A",
+  });
 
   return (
     <main className="">
       <section className="w-60 mx-auto h-fit pt-[14px] px-4 pb-7 flex flex-col gap-5 bg-white rounded-[5px] shadow-lg">
-        <div className="text-center text-primary text-[15px] font-black font-mulish capitalize leading-[18px]">
+        <div className="text-center text-primary text-md font-black font-mulish capitalize leading-[18px]">
           {name}
         </div>
         <div className="bg-neutral mx-auto w-[187px] h-fit min-h-[138px] px-6 py-4">
           {messages.map((text: string) => (
-            <div className="font-mulish leading-[18px] font-normal text-primary text-[15px] first-letter:uppercase">
+            <div className="font-mulish leading-[18px] font-normal text-primary text-md first-letter:uppercase">
               {text}
             </div>
           ))}
         </div>
 
         <div className="flex gap-2">
-          <div className="px-8 py-3 cursor-pointer text-secondary bg-secondary bg-opacity-10 justify-center items-center gap-2.5 flex leading-[18px] text-[15px] font-semibold font-mulish">
+          <div className="px-8 py-3 cursor-pointer text-secondary bg-secondary bg-opacity-10 justify-center items-center gap-2.5 flex leading-[18px] text-md font-semibold font-mulish">
             Edit
           </div>
-          <div className="px-8 py-3 cursor-pointer bg-red-600 bg-opacity-10 justify-center items-center gap-2.5 flex leading-[18px] text-[15px] text-red-600  font-semibold font-mulish">
+          <div className="px-8 py-3 cursor-pointer bg-red-600 bg-opacity-10 justify-center items-center gap-2.5 flex leading-[18px] text-md text-red-600  font-semibold font-mulish">
             Delete
           </div>
         </div>
@@ -101,8 +105,18 @@ const Interaction = ({ name, messages }: interaction) => {
         </div>
         <div className="w-[0.50px] h-[57px] bg-primary" />
       </footer>
-      <AddUser model={model} setModel={setModel} />
-      <AddBot model={model} setModel={setModel} />
+      <AddUser
+        model={model}
+        setModel={setModel}
+        component={component}
+        setComponent={setComponent}
+      />
+      <AddBot
+        model={model}
+        setModel={setModel}
+        component={component}
+        setComponent={setComponent}
+      />
     </main>
   );
 };
@@ -164,7 +178,7 @@ const App = ({
       >
         <div
           onClick={() => setIsModal("")}
-          className="text-primary cursor-pointer text-[15px] ml-auto relative right-[-12px]"
+          className="text-primary cursor-pointer text-md ml-auto relative right-[-12px]"
         >
           X
         </div>

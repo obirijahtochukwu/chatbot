@@ -1,5 +1,5 @@
 import { components } from "@/utils/constants";
-import { component } from "@/utils/types";
+import { component, component_state } from "@/utils/types";
 import React from "react";
 interface types {
   state: boolean;
@@ -9,8 +9,8 @@ export default function SelectComponent({
   component,
   setComponent,
 }: {
-  component: types;
-  setComponent: React.Dispatch<types>;
+  component: component_state;
+  setComponent: React.Dispatch<component_state>;
 }) {
   return (
     <div className={component.state ? "flex flex-col gap-3" : "hidden"}>
@@ -21,7 +21,7 @@ export default function SelectComponent({
         {components.map(({ name, value }) => (
           <div
             onClick={() => setComponent({ ...component, value: name })}
-            className={`font-inter w-full rounded-[200px] items-center flex justify-between duration-150 font-normal text-[15px] px-2.5 cursor-pointer ${
+            className={`font-inter w-full rounded-[200px] items-center flex justify-between duration-150 font-normal text-md px-2.5 cursor-pointer ${
               component.value == name
                 ? "text-white py-3 bg-secondary h-[38px]"
                 : "text-primary"
@@ -34,7 +34,7 @@ export default function SelectComponent({
       </div>
       <div
         onClick={() => setComponent({ ...component, state: false })}
-        className={`w-fit h-8 p-[7px] justify-center items-center flex text-[15px] font-mulish ml-auto cursor-pointer bg-secondary bg-opacity-10 text-secondary
+        className={`w-fit h-8 p-[7px] justify-center items-center flex text-md font-mulish ml-auto cursor-pointer bg-secondary bg-opacity-10 text-secondary
               }`}
       >
         Add component

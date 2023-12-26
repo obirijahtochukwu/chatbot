@@ -9,10 +9,10 @@ export const GeneratePhrases = ({
     <main>
       <section className="flex gap-3 flex-col">
         <div className="flex justify-between items-center">
-          <div className="text-[15px] text-primary font-normal font-mulish">
+          <div className="text-md text-primary font-normal font-mulish">
             Question Augmentation
           </div>
-          <div className="w-fit h-8 p-[7px] bg-secondary bg-opacity-10 cursor-pointer justify-center items-center text-secondary font-mulish gap-2.5 flex text-[15px]">
+          <div className="w-fit h-8 p-[7px] bg-secondary bg-opacity-10 cursor-pointer justify-center items-center text-secondary font-mulish gap-2.5 flex text-md">
             Save
             <div className="relative">
               <input
@@ -39,7 +39,7 @@ export const GeneratePhrases = ({
                   className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
                 />
 
-                <label className="font-mulish leading-[18px] font-normal text-primary text-[15px] first-letter:uppercase">
+                <label className="font-mulish leading-[18px] font-normal text-primary text-md first-letter:uppercase">
                   {text}
                 </label>
               </div>
@@ -51,7 +51,7 @@ export const GeneratePhrases = ({
             <div
               key={id}
               onClick={() => id == 1 && setGenerate(false)}
-              className={`w-fit h-8 p-[7px] justify-center items-center flex text-[15px] font-mulish cursor-pointer capitalize ${
+              className={`w-fit h-8 p-[7px] justify-center items-center flex text-md font-mulish cursor-pointer capitalize ${
                 id == 0
                   ? "text-red-600 bg-rose-100"
                   : "bg-secondary   bg-opacity-10 text-secondary"

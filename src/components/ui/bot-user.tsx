@@ -18,7 +18,7 @@ export default function BotUser({
             className="w-[100px] flex justify-center items-center flex-col bg-neutral h-[100px] gap-1"
           >
             <img className="w-[35px] h-[56.40px]" src={img} />
-            <div className="text-black capitalize text-[15px] font-mulish leading-[18px]">
+            <div className="text-black capitalize text-md font-mulish leading-[18px]">
               {name}
             </div>
           </div>

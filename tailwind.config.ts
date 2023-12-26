@@ -17,6 +17,9 @@ const config: Config = {
         mulish: ["Mulish", "sans-serif"],
         body: ["Inter", "sans-serif"],
       },
+      fontSize: {
+        md: "15px",
+      },
       colors: {
         primary: "#000",
         secondary: "#0177FB",
@@ -24,7 +27,6 @@ const config: Config = {
       },
       boxShadow: {
         "3xl": "[0px 4px 35px 0px rgba(0,0,0,0.15)]",
-        
       },
     },
   },

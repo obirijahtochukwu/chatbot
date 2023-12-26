@@ -43,5 +43,26 @@ export interface FileInfo {
 export interface msg {
   text?: string;
   file?: FileInfo[] | any;
+  component?: string;
+  rating?: number;
 }
+
+export interface chat {
+  name?: string;
+  msgs: msg[];
+  img?: string;
+}
+
+export interface component_state {
+  state?: boolean;
+  value?: string;
+}
+
+export interface settings {
+  title: string;
+  value: string;
+  select?: boolean;
+  copy?: boolean;
+}
+
 export type button = React.ButtonHTMLAttributes<HTMLButtonElement>;

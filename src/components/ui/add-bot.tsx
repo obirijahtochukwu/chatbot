@@ -4,21 +4,20 @@ import { GeneratePhrases } from "./generate-phrases";
 import SelectComponent from "./select-component";
 import { Icons } from "./icons";
 import { useDropzone } from "react-dropzone";
-import { FileInfo, msg } from "@/utils/types";
+import { FileInfo, component_state, msg } from "@/utils/types";
 import { Buttons } from "./buttons";
 
 export default function AddBot({
   model,
   setModel,
+  component,
+  setComponent,
 }: {
   model: string;
   setModel: React.Dispatch<string>;
+  component: component_state;
+  setComponent: React.Dispatch<component_state>;
 }) {
-  const [component, setComponent] = useState({
-    state: false,
-    value: "Component A",
-  });
-
   const [msgs, setMsgs] = useState([
     { text: "What time is the next event?" },
     { text: "When will be the next event?" },
@@ -46,13 +45,13 @@ export default function AddBot({
       >
         <div
           onClick={() => setModel("")}
-          className="text-primary cursor-pointer text-[15px] ml-auto relative right-[-16px]"
+          className="text-primary cursor-pointer text-md ml-auto relative right-[-16px]"
         >
           X
         </div>
         <div className="w-[100px] flex justify-center items-center mx-auto flex-col bg-neutral h-[100px] gap-1">
           <img className="w-11 h-11" src={"/media/story/chatgpt robot.svg"} />
-          <div className="text-primary capitalize text-[15px] font-mulish leading-[18px]">
+          <div className="text-primary capitalize text-md font-mulish leading-[18px]">
             bot
           </div>
         </div>
@@ -61,7 +60,7 @@ export default function AddBot({
           <SelectComponent component={component} setComponent={setComponent} />
           <div className="flex gap-3 flex-col">
             {component.state || (
-              <div className="text-primary text-[15px] font-normal font-inter leading-[18px] mt-3">
+              <div className="text-primary text-md font-normal font-inter leading-[18px] mt-3">
                 {component?.value}
               </div>
             )}
@@ -70,7 +69,7 @@ export default function AddBot({
                 placeholder="Bot message"
                 value={inputVal}
                 onChange={(e) => setInputVal(e.target.value)}
-                className="w-[341px] focus:outline-none text-primary text-opacity-50 text-[15px] flex items-center pl-6 h-8 bg-neutral font-mulish"
+                className="w-[341px] focus:outline-none text-primary text-opacity-50 text-md flex items-center pl-6 h-8 bg-neutral font-mulish"
               />
               <button
                 disabled={!inputVal}
@@ -80,7 +79,7 @@ export default function AddBot({
                     setInputVal("");
                   }
                 }}
-                className="w-[49px] h-8 p-[7px] bg-secondary bg-opacity-10 justify-center items-center text-secondary font-mulish gap-2.5 flex text-[15px] border-none"
+                className="w-[49px] h-8 p-[7px] bg-secondary bg-opacity-10 justify-center items-center text-secondary font-mulish gap-2.5 flex text-md border-none"
               >
                 Save
               </button>
@@ -99,7 +98,7 @@ export default function AddBot({
                         />
                         {file?.type.includes("image") ? (
                           <div className="">
-                            <label className="font-mulish leading-0 mb-1 font-normal text-primary text-[15px] capitalize">
+                            <label className="font-mulish leading-0 mb-1 font-normal text-primary text-md capitalize">
                               image
                             </label>
                             <img
@@ -109,7 +108,7 @@ export default function AddBot({
                           </div>
                         ) : (
                           <div className="">
-                            <label className="font-mulish leading-0 mb-1 font-normal text-primary text-[15px] capitalize">
+                            <label className="font-mulish leading-0 mb-1 font-normal text-primary text-md capitalize">
                               Video
                             </label>
                             <iframe
@@ -134,7 +133,7 @@ export default function AddBot({
                         className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
                       />
 
-                      <label className="font-mulish leading-[18px] font-normal text-primary text-[15px] first-letter:uppercase">
+                      <label className="font-mulish leading-[18px] font-normal text-primary text-md first-letter:uppercase">
                         {text}
                       </label>
                     </div>
@@ -155,7 +154,7 @@ export default function AddBot({
                     onClick={() =>
                       id == 3 && setComponent({ ...component, state: true })
                     }
-                    className={`w-fit h-8 p-[7px] justify-center items-center flex text-[15px] font-mulish cursor-pointer ${
+                    className={`w-fit h-8 p-[7px] justify-center items-center flex text-md font-mulish cursor-pointer ${
                       id == 4
                         ? "text-red-600 bg-rose-100"
                         : component.state && id == 3
@@ -205,7 +204,7 @@ const SelectFile = ({
     <div
       {...getRootProps()}
       key={id}
-      className={`w-fit h-8 p-[7px] justify-center items-center flex text-[15px] font-mulish cursor-pointer bg-secondary   bg-opacity-10 text-secondary
+      className={`w-fit h-8 p-[7px] justify-center items-center flex text-md font-mulish cursor-pointer bg-secondary   bg-opacity-10 text-secondary
       }`}
     >
       <input type="text" className="h-0 w-0" {...getInputProps()} />
@@ -244,13 +243,13 @@ export const AddBotDialog = ({
     >
       <div
         onClick={() => setModel("")}
-        className="text-primary cursor-pointer text-[15px] ml-auto relative right-[-16px]"
+        className="text-primary cursor-pointer text-md ml-auto relative right-[-16px]"
       >
         X
       </div>
       <div className="w-[100px] flex justify-center items-center mx-auto flex-col bg-neutral h-[100px] gap-1">
         <img className="w-11 h-11" src={"/media/story/chatgpt robot.svg"} />
-        <div className="text-primary capitalize text-[15px] font-mulish leading-[18px]">
+        <div className="text-primary capitalize text-md font-mulish leading-[18px]">
           bot
         </div>
       </div>
@@ -262,7 +261,7 @@ export const AddBotDialog = ({
               placeholder="Bot message"
               value={inputVal}
               onChange={(e) => setInputVal(e.target.value)}
-              className="w-[341px] focus:outline-none text-primary text-opacity-50 text-[15px] flex items-center pl-6 h-8 bg-neutral font-mulish"
+              className="w-[341px] focus:outline-none text-primary text-opacity-50 text-md flex items-center pl-6 h-8 bg-neutral font-mulish"
             />
 
             <Buttons.primary
@@ -290,7 +289,7 @@ export const AddBotDialog = ({
                       />
                       {file?.type.includes("image") ? (
                         <div className="">
-                          <label className="font-mulish leading-0 mb-1 font-normal text-primary text-[15px] capitalize">
+                          <label className="font-mulish leading-0 mb-1 font-normal text-primary text-md capitalize">
                             image
                           </label>
                           <img
@@ -300,7 +299,7 @@ export const AddBotDialog = ({
                         </div>
                       ) : (
                         <div className="">
-                          <label className="font-mulish leading-0 mb-1 font-normal text-primary text-[15px] capitalize">
+                          <label className="font-mulish leading-0 mb-1 font-normal text-primary text-md capitalize">
                             Video
                           </label>
                           <iframe
@@ -325,7 +324,7 @@ export const AddBotDialog = ({
                       className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
                     />
 
-                    <label className="font-mulish leading-[18px] font-normal text-primary text-[15px] first-letter:uppercase">
+                    <label className="font-mulish leading-[18px] font-normal text-primary text-md first-letter:uppercase">
                       {text}
                     </label>
                   </div>

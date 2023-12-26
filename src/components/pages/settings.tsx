@@ -13,7 +13,7 @@ export default function Settings() {
       <Title>Settings</Title>
 
       <main className="flex justify-between mx-auto w-full max-w-[400px] items-center">
-        <div className="text-primary text-[15px] font-normal font-mulish">
+        <div className="text-primary text-md font-normal font-mulish">
           GPT-3 key
         </div>
         <Buttons.primary
@@ -59,12 +59,12 @@ const Modal = ({
     >
       <div
         onClick={() => setIsModal(false)}
-        className="text-primary cursor-pointer absolute top-3 right-3 text-[15px] ml-auto"
+        className="text-primary cursor-pointer absolute top-3 right-3 text-md ml-auto"
       >
         X
       </div>
 
-      <main className="flex text-primary text-[15px] font-normal font-mulish justify-between items-center">
+      <main className="flex text-primary text-md font-normal font-mulish justify-between items-center">
         <div className="">GPT-3 key</div>
         <Buttons.primary
           disabled={!inputVal}

@@ -54,19 +54,25 @@ export default function Sidebar() {
       disable: showTab ? true : false,
     },
     {
-      icon: <Icons.chat color={url.includes("/chat-history") ? "#fff" : ""} />,
+      icon: (
+        <Icons.chat
+          color={url == `/story/${params}/chat-history` ? "#fff" : ""}
+        />
+      ),
       title: "Chat history",
-      path: "/chat-history",
+      path: `/story/${params}/chat-history`,
       disable: showTab ? true : false,
     },
     {
       icon: (
         <Icons.settings
-          color={url.includes("/client-configuration") ? "#fff" : ""}
+          color={
+            url.includes(`/story/${params}/client-configuration`) ? "#fff" : ""
+          }
         />
       ),
       title: "Client configuration",
-      path: "/client-configuration",
+      path: `/story/${params}/client-configuration`,
       disable: showTab ? true : false,
     },
     {
