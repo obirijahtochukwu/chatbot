@@ -38,7 +38,7 @@ export default function Profile() {
         />
         <div
           {...getRootProps()}
-          className="flex justify-center text-base font-inter font-normal text-primary text-opacity-70 items-center gap-1.5"
+          className="flex justify-center text-base font-body font-normal text-primary text-opacity-70 items-center gap-1.5"
         >
           {/* <input type="text" {...getInputProps()} /> */}
           <div className=" mt-1">Profile photo</div>
@@ -47,7 +47,7 @@ export default function Profile() {
         <section className="flex flex-col gap-3">
           {user.map(({ title, value }) => (
             <div className="">
-              <div className="text-sm font-medium font-inter text-primary text-opacity-70">
+              <div className="text-sm font-medium font-body text-primary text-opacity-70">
                 {title}
               </div>
               <input

@@ -6,6 +6,8 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { GenerateScript } from "./generate-script";
 import Essantials from "./essentials/essantials";
+import Theme from "./theme/theme";
+import Assets from "./assets/assets";
 // import GenerateScript from "./generate-script";
 
 export default function ClientConfiguration() {
@@ -21,6 +23,10 @@ export default function ClientConfiguration() {
   const Content = () => {
     if (activeTab == "Essentials") {
       return <Essantials />;
+    } else if (activeTab == "Theme") {
+      return <Theme />;
+    } else {
+      return <Assets />;
     }
   };
 
@@ -42,7 +48,7 @@ export default function ClientConfiguration() {
           title="Generate script"
         />
       </header>
-      <section className="flex gap-4">
+      <section className="flex gap-44">
         <aside className="flex w-40 flex-col">
           {["Essentials", "Theme", "Assets"].map((name) => (
             <div

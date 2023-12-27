@@ -14,14 +14,14 @@ export default function SelectComponent({
 }) {
   return (
     <div className={component.state ? "flex flex-col gap-3" : "hidden"}>
-      <div className="font-inter text-primary font-medium text-[26px]">
+      <div className="font-body text-primary font-medium text-[26px]">
         Components
       </div>
       <div className="flex w-[337px] px-2.5 py-[18px] h-[175px] flex-col justify-between bg-neutral">
         {components.map(({ name, value }) => (
           <div
             onClick={() => setComponent({ ...component, value: name })}
-            className={`font-inter w-full rounded-[200px] items-center flex justify-between duration-150 font-normal text-md px-2.5 cursor-pointer ${
+            className={`font-body w-full rounded-[200px] items-center flex justify-between duration-150 font-normal text-md px-2.5 cursor-pointer ${
               component.value == name
                 ? "text-white py-3 bg-secondary h-[38px]"
                 : "text-primary"

@@ -17,7 +17,7 @@ export default function ChatHistory() {
 
   return (
     <main className="w-full hidden">
-      <div className="text-primary mb-5 font-inter text-[26px] font-medium">
+      <div className="text-primary mb-5 font-body text-[26px] font-medium">
         {chatbot?.name} / {story?.name} / Train historyijkb
       </div>
       ll

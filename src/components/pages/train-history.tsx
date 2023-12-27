@@ -14,7 +14,7 @@ export default function TrainHistory() {
 
   return (
     <main className="w-full">
-      <div className="text-primary mb-5 font-inter text-[26px] font-medium">
+      <div className="text-primary mb-5 font-body text-[26px] font-medium">
         {chatbot?.name} / {story?.name} / Train history
       </div>
       <Buttons.side
@@ -58,7 +58,7 @@ const TrainBotDialog = () => {
           className="w-14 h-16 rounded-full"
           src="/media/dashboard/dashboard-1.svg"
         />
-        <div className=" text-base font-inter text-primary font-medium capitalize">
+        <div className=" text-base font-body text-primary font-medium capitalize">
           {chatbot.name}
         </div>
       </header>

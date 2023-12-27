@@ -17,7 +17,7 @@ export default function ChatHistory() {
 
   return (
     <main className="w-full">
-      <div className="text-primary mb-5 font-inter text-[26px] font-medium">
+      <div className="text-primary mb-5 font-body text-[26px] font-medium">
         {chatbot?.name} / {story?.name} / Train history
       </div>
       <BotDialog />
@@ -137,7 +137,7 @@ const BotDialog = () => {
           className="w-14 h-16 rounded-full"
           src="/media/dashboard/dashboard-1.svg"
         />
-        <div className=" text-base font-inter text-primary font-medium capitalize">
+        <div className=" text-base font-body text-primary font-medium capitalize">
           {chatbot.name}
         </div>
       </header>
@@ -238,7 +238,7 @@ const BotDialog = () => {
 const Chats = ({ chats }: { chats: chat[] }) => {
   return (
     <main className="w-full">
-      <div className="text-md text-primary text-opacity-60 font-inter text-center">
+      <div className="text-md text-primary text-opacity-60 font-body text-center">
         9 Feb 2023
       </div>
       <section className="flex mt-[14px] flex-col text-start gap-6">
@@ -279,7 +279,7 @@ const Chat = ({ name, msgs, img }: chat) => {
           ({ text, rating, component }: { rating?: number | any } & msg) => (
             <div className="flex gap-[6px] ">
               <div
-                className={`py-[14px] w-[300px] px-5 rounded-xl text-md font-normal tracking-[0.35px] font-inter ${
+                className={`py-[14px] w-[300px] px-5 rounded-xl text-md font-normal tracking-[0.35px] font-body ${
                   name == "bot"
                     ? "text-primary bg-white"
                     : "bg-secondary text-white"
@@ -296,7 +296,7 @@ const Chat = ({ name, msgs, img }: chat) => {
                   />
                   <div
                     onClick={() => openModal(component)}
-                    className=" font-inter text-sm font-light text-primary tracking-[0.3px]"
+                    className=" font-body text-sm font-light text-primary tracking-[0.3px]"
                   >
                     {rating}% - {component}
                   </div>

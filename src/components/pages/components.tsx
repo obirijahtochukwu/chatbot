@@ -20,7 +20,7 @@ export default function Components() {
   return (
     <main className="w-full">
       <div className="flex items-center">
-        <div className="text-primary font-inter text-[26px] font-medium">
+        <div className="text-primary font-body text-[26px] font-medium">
           {chatbot?.name} / {story?.name} / Components
         </div>
       </div>
@@ -70,7 +70,7 @@ const SelectComponent = ({
         <div className="flex items-center gap-3">
           <div
             onClick={() => setComponent(name)}
-            className={`font-inter rounded-[200px] w-[317px] items-center flex justify-between duration-150 font-normal text-md px-2.5 cursor-pointer ${
+            className={`font-body rounded-[200px] w-[317px] items-center flex justify-between duration-150 font-normal text-md px-2.5 cursor-pointer ${
               component == name
                 ? "text-white py-3 bg-secondary h-[38px]"
                 : "text-primary"

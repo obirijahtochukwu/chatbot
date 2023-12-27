@@ -19,7 +19,7 @@ export default function TestModel({
       >
         X
       </div>
-      <div className="text-md text-start text-primary font-inter font-normal">
+      <div className="text-md text-start text-primary font-body font-normal">
         Test Model
       </div>
 
@@ -28,7 +28,7 @@ export default function TestModel({
           <div className="flex flex-col gap-[6px] ">
             {msgs.map((msg) => (
               <div
-                className={`py-[14px] w-[300px] px-5 rounded-xl text-md font-normal tracking-[0.35px] font-inter ${
+                className={`py-[14px] w-[300px] px-5 rounded-xl text-md font-normal tracking-[0.35px] font-body ${
                   name == "bot"
                     ? "text-primary bg-white"
                     : "ml-auto bg-secondary text-white"

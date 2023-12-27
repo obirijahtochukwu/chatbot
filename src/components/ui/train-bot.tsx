@@ -53,7 +53,7 @@ export default function TrainBot({
             className="w-14 h-16 rounded-full"
             src="/media/dashboard/dashboard-1.svg"
           />
-          <div className=" text-base font-inter text-primary font-medium capitalize">
+          <div className=" text-base font-body text-primary font-medium capitalize">
             {chatbot.name}
           </div>
         </header>

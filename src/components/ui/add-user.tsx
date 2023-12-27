@@ -54,7 +54,7 @@ export default function AddUser({
             />
             <div className="flex gap-3 flex-col">
               {component.state || (
-                <div className="text-primary text-md font-normal font-inter leading-[18px] mt-3">
+                <div className="text-primary text-md font-normal font-body leading-[18px] mt-3">
                   {component?.value}
                 </div>
               )}

@@ -84,3 +84,91 @@ export const scripts = [
   { title: "Script - Test Chat Widget", value: script },
   { title: "IFRAME - Add Chat Widget to your website", value: script },
 ];
+
+export const color_theme = [
+  { color: "Blue" },
+  { color: "Red" },
+  { color: "Green" },
+  { color: "Yellow" },
+];
+
+export const chatbot_sizes = [
+  { title: "Small", size: "30px" },
+  { title: "Medium", size: "35px" },
+  { title: "Big", size: "40px" },
+  { title: "Very big", size: "45px" },
+];
+
+export const customize_colors = [
+  {
+    title: "Primary color",
+    theme: [
+      { for: "Bot", color: "#0177FB" },
+      { for: "User", color: "#D4D4D4" },
+      { for: "Header", color: "#FFFFFF" },
+      { for: "Send icon", color: "#FFFFFF" },
+      { for: "Chatbox", color: "" },
+      { for: "Open icon", color: "#FFFFFF" },
+    ],
+  },
+  {
+    title: "Background",
+    theme: [
+      { for: "Bot", color: "#EAEAEA" },
+      { for: "User", color: "#0177FB" },
+      { for: "Header", color: "#0177FB" },
+      { for: "Send icon", color: "#0177FB" },
+      { for: "Chatbox", color: "#FAFAFA" },
+      { for: "Open icon", color: "#0177FB" },
+    ],
+  },
+];
+
+export const ranges = [
+  {
+    title: "Condensed Chat Container",
+    settings: [
+      { name: "Height", range: 50 },
+      { name: "Width", range: 50 },
+    ],
+  },
+  {
+    title: "Header",
+    settings: [
+      { name: "Header", range: 50 },
+      { name: "Alignment", range: 50 },
+    ],
+  },
+  {
+    title: "Expanded Chat Container",
+    settings: [
+      { name: "Height", range: 50 },
+      { name: "Width", range: 50 },
+    ],
+  },
+];
+
+export const chat_container = [
+  { title: "Header", value: "Custom-header" },
+  { title: "Container", value: "colored-box" },
+  { title: "Chat container", value: "chat-messenger" },
+  { title: "User message", value: "my-user-message" },
+  { title: "Bot message", value: "my-bot-message" },
+  { title: "Form", value: "theme-input-form" },
+  { title: "Open button", value: "trigger-chat" },
+];
+
+export const font_setting = [
+  { title: "Bot Message Font", value: "Inter" },
+  { title: "Size", value: "14px" },
+  { title: "User Message Font", value: "Inter" },
+  { title: "Size", value: "14px" },
+];
+
+export const icons_setting = [
+  { name: "Bot icon" },
+  { name: "User icon" },
+  { name: "Header icon" },
+  { name: "Open button icon" },
+  { name: "Close button icon" },
+];

@@ -6,7 +6,7 @@ export default function Title({ children, className }: button) {
   return (
     <div
       className={
-        "text-primary mb-5 font-inter text-[26px] font-medium " + className
+        "text-primary mb-5 font-body text-[26px] font-medium " + className
       }
     >
       {children}
