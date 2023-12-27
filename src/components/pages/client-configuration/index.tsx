@@ -48,7 +48,7 @@ export default function ClientConfiguration() {
           title="Generate script"
         />
       </header>
-      <section className="flex gap-44">
+      <section className="flex gap-4">
         <aside className="flex w-40 flex-col">
           {["Essentials", "Theme", "Assets"].map((name) => (
             <div
