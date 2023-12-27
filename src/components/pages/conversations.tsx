@@ -36,7 +36,7 @@ export default function Conversations() {
                   <div className="opacity-70">
                     {interactions?.length} interactions
                   </div>
-                  <div className="opacity-70 duration-200 hover:shadow ml-auto hover:bg-red-100 px-4 py-2.5 rounded-lg justify-center items-center w-fit gap-2 flex">
+                  <div className="opacity-70 duration-200 hover:shadow ml-auto hover:bg-opacity-10 hover:bg-red-600 px-4 py-2.5 rounded-lg justify-center hover:text-red-600 items-center w-fit gap-2 flex">
                     Delete story
                   </div>
                   <div className="w-24 text-secondary px-4 py-2.5 bg-secondary bg-opacity-10 rounded-lg justify-center ml-auto items-center gap-2 flex">

@@ -37,7 +37,7 @@ export default function Dashboard() {
                   </div>
                   <div className="opacity-70">{chatbot.date}</div>
                   <div className="opacity-70">{chatbot.percent}</div>
-                  <div className="opacity-70 duration-200 hover:shadow hover:bg-red-100 px-4 py-2.5 rounded-lg justify-center items-center gap-2 flex">
+                  <div className="opacity-70 duration-200 hover:shadow hover:bg-red-600 hover:text-red-600 hover:bg-opacity-10 px-4 py-2.5 rounded-lg justify-center items-center gap-2 flex">
                     Delete bot
                   </div>
                   <div className="w-24 text-secondary px-4 py-2.5 bg-secondary bg-opacity-10 rounded-lg justify-center items-center gap-2 flex">

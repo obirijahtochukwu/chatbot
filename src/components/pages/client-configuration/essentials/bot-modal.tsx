@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 
 export default function BotModal() {
   const ref: React.MutableRefObject<HTMLElement> | any = useRef();
-  const [isModal, setIsModal] = useState(false);
+  const [isModal, setIsModal] = useState(true);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   // Drag modal function
@@ -44,7 +44,7 @@ export default function BotModal() {
       ref={ref}
       onMouseDown={onMouseDown}
       className={`w-[469px] fixed z-20 top-[85px] right-5 max-h-[618px] cursor-default bg-neutral shadow-xl ${
-        !isModal ? "block" : "hidden"
+        isModal ? "block" : "hidden"
       }`}
     >
       <header className="h-16 w-full bg-secondary text-white flex flex-col">

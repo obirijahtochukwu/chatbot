@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 export default function TestModel({
   testModel,
@@ -7,11 +7,24 @@ export default function TestModel({
   testModel: boolean;
   setTestModel: React.Dispatch<boolean>;
 }) {
+  const ref = useRef<HTMLInputElement | any>();
+  const [divPos, setDivPos] = useState(0);
+
+  useEffect(() => {
+    setDivPos(ref.current.getBoundingClientRect().bottom);
+    console.log(window.innerHeight);
+  }, [testModel]);
+
+  useEffect(() => {
+    console.log(divPos);
+  }, [divPos]);
+
   return (
     <main
-      className={`w-[469px] flex-col absolute z-10 top-[85px] right-0 max-h-[618px] px-12 cursor-default py-[28px] bg-neutral shadow-[0px_4px_35px_5px_rgba(0,0,0,0.15)] ${
+      ref={ref}
+      className={`w-[469px] flex-col absolute z-10 right-0 max-h-[618px] px-12 cursor-default py-[28px] bg-neutral shadow-[0px_4px_35px_5px_rgba(0,0,0,0.15)] ${
         testModel ? "flex" : "hidden"
-      }`}
+      } ${divPos > window.innerHeight ? "top-[-50px]" : "top-[85px]"}`}
     >
       <div
         onClick={() => setTestModel(false)}
