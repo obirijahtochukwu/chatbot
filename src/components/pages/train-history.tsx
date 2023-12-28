@@ -4,13 +4,18 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Buttons } from "../ui/buttons";
 import TestModel from "../ui/test-model";
+import TrainBot from "../ui/train-bot";
 
 export default function TrainHistory() {
+  const [trainBot, setTrainBot] = useState(false);
+
   const params: Params = useParams();
   const { chatbot } = useSelector((state: any) => state.context);
   const story = chatbot?.stories?.find(
     (story: any, idx: any) => idx == params.slug
   );
+
+  const props = { trainBot, setTrainBot };
 
   return (
     <main className="w-full">
@@ -19,9 +24,10 @@ export default function TrainHistory() {
       </div>
       <Buttons.side
         classname="ml-auto mr-12 relative bottom-[-38px]"
-        // onClick={() => setTrainBot(true)}
+        onClick={() => setTrainBot(true)}
         title="Train Bot"
       />
+      <TrainBot {...props} />
       <TrainBotDialog />
     </main>
   );

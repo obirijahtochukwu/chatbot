@@ -11,8 +11,10 @@ export default function TestModel({
   const [divPos, setDivPos] = useState(0);
 
   useEffect(() => {
-    setDivPos(ref.current.getBoundingClientRect().bottom);
-    console.log(window.innerHeight);
+    if (ref.current.getBoundingClientRect().bottom > window.innerHeight) {
+      setDivPos(ref.current.getBoundingClientRect().bottom);
+      console.log(window.innerHeight);
+    }
   }, [testModel]);
 
   useEffect(() => {
@@ -22,7 +24,8 @@ export default function TestModel({
   return (
     <main
       ref={ref}
-      className={`w-[469px] flex-col absolute z-10 right-0 max-h-[618px] px-12 cursor-default py-[28px] bg-neutral shadow-[0px_4px_35px_5px_rgba(0,0,0,0.15)] ${
+      style={{ transform: `translateY(-${divPos - window.innerHeight}px)` }}
+      className={`w-[469px] flex-col absolute z-10 right-0 max-h-[618px] px-12 duration-300 cursor-default py-[28px] bg-neutral shadow-[0px_4px_35px_5px_rgba(0,0,0,0.15)] ${
         testModel ? "flex" : "hidden"
       } ${divPos > window.innerHeight ? "top-[-50px]" : "top-[85px]"}`}
     >
