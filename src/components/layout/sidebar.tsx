@@ -10,7 +10,9 @@ export default function Sidebar() {
   const [url, setUrl] = useState("");
   const showTab = useSelector((state: any) => state.context.activePage);
   console.log(showTab);
-  const params = JSON.parse(localStorage.getItem("story_url"));
+  const params =
+    typeof window != "undefined" &&
+    JSON.parse(localStorage.getItem("story_url"));
 
   const pages = [
     {
