@@ -21,7 +21,7 @@ export default function Sidebar() {
           color={
             url === "/"
               ? "#fff"
-              : url == `/dashboard/conversations`
+              : url === `/dashboard/conversations`
               ? "#fff"
               : "#000"
           }
@@ -32,7 +32,7 @@ export default function Sidebar() {
       disable: true,
     },
     {
-      icon: <Icons.story color={url == `/story/${params}` ? "#fff" : "#000"} />,
+      icon: <Icons.story color={url === `/story/${params}` ? "#fff" : "#000"} />,
       title: "story",
       path: `/story/${params}`,
       disable: showTab ? true : false,
@@ -48,7 +48,7 @@ export default function Sidebar() {
     {
       icon: (
         <Icons.history
-          color={url == `/story/${params}/train-history` ? "#fff" : ""}
+          color={url === `/story/${params}/train-history` ? "#fff" : ""}
         />
       ),
       title: "Train history",
@@ -58,7 +58,7 @@ export default function Sidebar() {
     {
       icon: (
         <Icons.chat
-          color={url == `/story/${params}/chat-history` ? "#fff" : ""}
+          color={url === `/story/${params}/chat-history` ? "#fff" : ""}
         />
       ),
       title: "Chat history",
@@ -120,7 +120,7 @@ export default function Sidebar() {
             disable && (
               <div
                 onClick={() => router.push(path)}
-                className={`w-full pl-6 pr-2 py-3.5 rounded-full justify-start items-center duration-300 gap-3.5 inline-flex hover:shadow  ${
+                className={`w-full pl-6 pr-2 py-3.5 rounded-full justify-start items-center duration-300 gap-3.5 inline-flex hover:shadow ${
                   url === path
                     ? "bg-secondary cursor-auto text-white shadow"
                     : url.includes(`${path}${title}`)

@@ -18,7 +18,7 @@ export default function Story() {
   const [activeTab, setActiveTab] = useState("Flow");
   const { chatbot } = useSelector((state: any) => state.context);
   const story = chatbot?.stories?.find(
-    (story: any, idx: any) => idx == params.slug
+    (story: any, idx: any) => idx === params.slug
   );
 
   useEffect(() => {
@@ -40,7 +40,7 @@ export default function Story() {
             <div
               onClick={() => setActiveTab(name)}
               className={`w-[72px] h-[30px] px-[21px] py-[9px] cursor-pointer rounded-[75px] justify-center duration-200 items-center flex   text-[14.87px] ${
-                activeTab === name
+                activeTab == name
                   ? "bg-secondary text-white"
                   : "text-primary  hover:bg-blue-50"
               }`}
@@ -49,7 +49,7 @@ export default function Story() {
             </div>
           ))}
         </div>
-        {activeTab == "Flow" ? (
+        {activeTab === "Flow" ? (
           story?.interactions.map(({ name, messages }: interaction) => {
             const props = { name, messages };
             return <Interaction {...props} />;
@@ -173,7 +173,7 @@ const App = ({
       />
       <section
         className={`w-[452px] absolute top-full left-[calc((100%-452px)/2)] flex flex-col h-fit px-7 pt-[25px] pb-[65px] bg-white shadow-[0px_4px_35px_0px_rgba(0,0,0,0.15)] ${
-          isModal == name ? "visible z-10" : " invisible -z-10"
+          isModal === name ? "visible z-10" : " invisible -z-10"
         }`}
       >
         <div

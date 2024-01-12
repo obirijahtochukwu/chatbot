@@ -12,7 +12,7 @@ export default function Components() {
   const params: Params = useParams();
   const { chatbot } = useSelector((state: any) => state.context);
   const story = chatbot?.stories?.find(
-    (story: any, idx: any) => idx == params.slug
+    (story: any, idx: any) => idx === params.slug
   );
 
   const props = { component, setComponent, activeTab, setActiveTab };
@@ -32,7 +32,7 @@ export default function Components() {
               <div
                 onClick={() => setActiveTab(name)}
                 className={`w-fit h-[30px] px-[21px] py-[9px] cursor-pointer rounded-[75px] justify-center duration-200 items-center flex text-[14.87px] ${
-                  activeTab === name
+                  activeTab == name
                     ? "bg-secondary text-white"
                     : "text-primary  hover:bg-blue-50"
                 }`}
@@ -60,7 +60,7 @@ const SelectComponent = ({
   const [list, setList] = useState(components);
 
   const deleteComp = (name: string) => {
-    const items = list.filter((item) => item.name !== name);
+    const items = list.filter((item) => item.name != name);
     setList(items);
   };
 
@@ -71,7 +71,7 @@ const SelectComponent = ({
           <div
             onClick={() => setComponent(name)}
             className={`font-body rounded-[200px] w-[317px] items-center flex justify-between duration-150 font-normal text-md px-2.5 cursor-pointer ${
-              component == name
+              component === name
                 ? "text-white py-3 bg-secondary h-[38px]"
                 : "text-primary"
             }`}
@@ -79,7 +79,7 @@ const SelectComponent = ({
             <div className="">{name}</div>
             <div className="">{value}</div>
           </div>
-          {component == name && (
+          {component === name && (
             <img
               src="/media/components/Trash Can.svg"
               alt=""

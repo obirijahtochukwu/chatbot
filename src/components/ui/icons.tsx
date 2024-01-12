@@ -17,7 +17,7 @@ export const Icons = {
           stroke={color || "black"}
           stroke-width="0.822785"
           stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinejoin="round"
         />
       </g>
       <defs>
@@ -55,7 +55,7 @@ export const Icons = {
           stroke-width="0.822785"
           stroke-miterlimit="10"
           stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinejoin="round"
         />
         <path
           d="M8.7325 10.5857C8.7325 11.4908 7.99199 12.2313 7.08693 12.2313C6.63714 12.2313 6.22026 12.0448 5.92406 11.7486C5.61588 11.4399 5.44234 11.0219 5.44136 10.5857"
@@ -90,7 +90,7 @@ export const Icons = {
         stroke={color || "white"}
         stroke-width="1.5"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
     </svg>
   ),
@@ -108,7 +108,7 @@ export const Icons = {
         stroke={color || "#200E32"}
         stroke-width="1.5"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path
         fill-rule="evenodd"
@@ -117,7 +117,7 @@ export const Icons = {
         stroke={color || "#200E32"}
         stroke-width="1.5"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
     </svg>
   ),
@@ -136,14 +136,14 @@ export const Icons = {
           stroke={color || "black"}
           stroke-width="1.5"
           stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinejoin="round"
         />
         <path
           d="M5.83337 10.8334H10.8334M5.83337 14.1667H9.16671M18.3334 8.33341H15C12.5 8.33341 11.6667 7.50008 11.6667 5.00008V1.66675L18.3334 8.33341Z"
           stroke={color || "black"}
           stroke-width="1.5"
           stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinejoin="round"
         />
       </g>
       <defs>
@@ -168,7 +168,7 @@ export const Icons = {
         stroke-width="1.5"
         stroke-miterlimit="10"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
     </svg>
   ),
@@ -187,7 +187,7 @@ export const Icons = {
         stroke-width="2"
         stroke-miterlimit="10"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
     </svg>
   ),
@@ -343,7 +343,7 @@ export const Icons = {
         stroke-opacity="0.67"
         stroke-width="1.5"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path
         d="M12.9098 7.83991L7.7198 13.0299C7.5198 13.2299 7.3298 13.6199 7.2898 13.8999L7.0098 15.8799C6.9098 16.5999 7.4098 17.0999 8.1298 16.9999L10.1098 16.7199C10.3898 16.6799 10.7798 16.4899 10.9798 16.2899L16.1698 11.0999C17.0598 10.2099 17.4898 9.16991 16.1698 7.84991C14.8498 6.51991 13.8098 6.93991 12.9098 7.83991Z"
@@ -352,7 +352,7 @@ export const Icons = {
         stroke-width="1.5"
         stroke-miterlimit="10"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path
         d="M12.1699 8.58008C12.387 9.35526 12.8001 10.0615 13.3693 10.6307C13.9385 11.1999 14.6447 11.613 15.4199 11.8301"
@@ -361,7 +361,7 @@ export const Icons = {
         stroke-width="1.5"
         stroke-miterlimit="10"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
     </svg>
   ),
@@ -398,7 +398,7 @@ export const Icons = {
         stroke={color || "#000"}
         stroke-width="1.5"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
     </svg>
   ),

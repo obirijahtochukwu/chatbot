@@ -12,7 +12,7 @@ export default function ChatHistory() {
   const params: Params = useParams();
   const { chatbot } = useSelector((state: any) => state.context);
   const story = chatbot?.stories?.find(
-    (story: any, idx: any) => idx == params.slug
+    (story: any, idx: any) => idx === params.slug
   );
 
   return (
@@ -87,7 +87,7 @@ const BotDialog = () => {
       icon: (
         <Icons.expand
           onClick={() => setTab("expand")}
-          color={tab == "expand" ? "#0177FB" : "#000"}
+          color={tab === "expand" ? "#0177FB" : "#000"}
         />
       ),
     },
@@ -96,7 +96,7 @@ const BotDialog = () => {
       icon: (
         <Icons.minimize
           onClick={() => setTab("minimize")}
-          color={tab == "minimize" ? "#0177FB" : "#000"}
+          color={tab === "minimize" ? "#0177FB" : "#000"}
         />
       ),
     },
@@ -148,13 +148,13 @@ const BotDialog = () => {
         {buttons.map(({ icon }, idx) => (
           <div key={idx} className="cursor-pointer relative">
             {icon}
-            {idx == 0 && (
+            {idx === 0 && (
               <DownloadDialog setDownload={setDownload} download={download} />
             )}
           </div>
         ))}
       </div>
-      {tab == "expand" ? (
+      {tab === "expand" ? (
         <main className="w-full flex min-h-[574px]  bg-neutral py-2 px-4 justify-between">
           <div className="w-6/12">
             <div className="mb-4 grid grid-cols-12">
@@ -163,9 +163,9 @@ const BotDialog = () => {
                   <div
                     key={idx}
                     className={`text-md font-semibold font-mulish text-primary ${
-                      idx == 2
+                      idx === 2
                         ? "col-span-3"
-                        : idx == 1
+                        : idx === 1
                         ? "col-span-5"
                         : "col-span-4"
                     }`}
@@ -181,7 +181,7 @@ const BotDialog = () => {
                   key={idx}
                   onClick={() => setUserId(idx)}
                   className={`grid grid-cols-12 text-md font-normal leading-[18px] h-9 items-center px-2 rounded-full cursor-pointer duration-200 font-mulish  ${
-                    userId == idx ? "bg-secondary text-white" : "text-primary"
+                    userId === idx ? "bg-secondary text-white" : "text-primary"
                   }`}
                 >
                   <div className="col-span-4">{email}</div>
@@ -271,7 +271,7 @@ const Chat = ({ name, msgs, img }: chat) => {
         component={component}
         setComponent={setComponent}
       />
-      {name == "user" && (
+      {name === "user" && (
         <img src={img} alt="" className="w-6 h-6 rounded-full" />
       )}
       <div className="flex flex-col gap-[6px]  ">
@@ -280,14 +280,14 @@ const Chat = ({ name, msgs, img }: chat) => {
             <div className="flex gap-[6px] ">
               <div
                 className={`py-[14px] w-[300px] px-5 rounded-xl text-md font-normal tracking-[0.35px] font-body ${
-                  name == "bot"
+                  name === "bot"
                     ? "text-primary bg-white"
                     : "bg-secondary text-white"
                 }`}
               >
                 {text}
               </div>
-              {name == "user" && (
+              {name === "user" && (
                 <div className="flex cursor-pointer gap-[5px] items-center">
                   <div
                     className={`w-[15px] h-[15px] rounded-[50px] ${
@@ -308,7 +308,7 @@ const Chat = ({ name, msgs, img }: chat) => {
         )}
       </div>
 
-      {name == "bot" && (
+      {name === "bot" && (
         <img src={img} alt="" className="w-6 h-6 rounded-full" />
       )}
     </div>
@@ -348,7 +348,7 @@ const DownloadDialog = ({
           <Buttons.primary
             key={idx}
             onClick={() => setDownload(false)}
-            classname={idx == 1 ? "!bg-rose-100 text-red-600" : ""}
+            classname={idx === 1 ? "!bg-rose-100 text-red-600" : ""}
             title={name}
           ></Buttons.primary>
         ))}

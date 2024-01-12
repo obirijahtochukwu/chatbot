@@ -26,7 +26,7 @@ export default function AddUser({
   return (
     <main
       className={`fixed top-0 duration-300 left-0 h-screen w-screen flex justify-center bg-primary bg-opacity-[0.1] backdrop-blur-sm items-center ${
-        model == "user" ? "z-10 visible" : "z-[-1] invisible"
+        model === "user" ? "z-10 visible" : "z-[-1] invisible"
       }`}
     >
       <div
@@ -102,16 +102,16 @@ export default function AddUser({
                     <div
                       key={id}
                       onClick={() =>
-                        id == 1
+                        id === 1
                           ? setComponent({ ...component, state: true })
                           : id < 1
                           ? setGenerate(true)
                           : null
                       }
                       className={`w-fit h-8 p-[7px] justify-center items-center flex text-md font-mulish cursor-pointer ${
-                        id == 2
+                        id === 2
                           ? "text-red-600 bg-rose-100"
-                          : component.state && id == 1
+                          : component.state && id === 1
                           ? "hidden"
                           : "bg-secondary   bg-opacity-10 text-secondary"
                       }`}
@@ -147,7 +147,7 @@ export const AddUserDialog = ({
   return (
     <main
       className={`w-fit h-[473px] bg-white rounded-[5px] px-7 flex flex-col gap-3 pt-3 pb-8 shadow-lg ${
-        model == "user" ? "" : "hidden"
+        model === "user" ? "" : "hidden"
       }`}
     >
       <div
@@ -209,7 +209,7 @@ export const AddUserDialog = ({
                   key={id}
                   onClick={() => id < 1 && setGenerate(true)}
                   title={name}
-                  classname={`${id == 1 && "!text-red-600 !bg-rose-100"}`}
+                  classname={`${id === 1 && "!text-red-600 !bg-rose-100"}`}
                 />
               ))}
             </div>

@@ -17,13 +17,13 @@ export default function ClientConfiguration() {
   const params: Params = useParams();
   const { chatbot } = useSelector((state: any) => state.context);
   const story = chatbot?.stories?.find(
-    (story: any, idx: any) => idx == params.slug
+    (story: any, idx: any) => idx === params.slug
   );
 
   const Content = () => {
-    if (activeTab == "Essentials") {
+    if (activeTab === "Essentials") {
       return <Essantials />;
-    } else if (activeTab == "Theme") {
+    } else if (activeTab === "Theme") {
       return <Theme />;
     } else {
       return <Assets />;
@@ -54,7 +54,7 @@ export default function ClientConfiguration() {
             <div
               onClick={() => setActiveTab(name)}
               className={`flex w-full duration-300 items-center h-12 font-body text-md font-normal rounded-full px-2.5 hover:shadow ${
-                activeTab == name
+                activeTab === name
                   ? "bg-secondary text-white cursor-auto"
                   : "cursor-pointer text-primary"
               }`}

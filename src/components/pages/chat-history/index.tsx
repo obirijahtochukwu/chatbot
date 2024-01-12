@@ -12,7 +12,7 @@ export default function ChatHistory() {
   const params: Params = useParams();
   const { chatbot } = useSelector((state: any) => state.context);
   const story = chatbot?.stories?.find(
-    (story: any, idx: any) => idx == params.slug
+    (story: any, idx: any) => idx === params.slug
   );
 
   return (

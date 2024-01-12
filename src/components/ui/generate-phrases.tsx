@@ -50,9 +50,9 @@ export const GeneratePhrases = ({
           {["cancel", "save"].map((name, id) => (
             <div
               key={id}
-              onClick={() => id == 1 && setGenerate(false)}
+              onClick={() => id === 1 && setGenerate(false)}
               className={`w-fit h-8 p-[7px] justify-center items-center flex text-md font-mulish cursor-pointer capitalize ${
-                id == 0
+                id === 0
                   ? "text-red-600 bg-rose-100"
                   : "bg-secondary   bg-opacity-10 text-secondary"
               }`}

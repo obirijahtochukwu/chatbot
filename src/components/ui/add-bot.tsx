@@ -37,7 +37,7 @@ export default function AddBot({
   return (
     <main
       className={`fixed top-0 duration-300 left-0 h-screen w-screen flex justify-center bg-primary bg-opacity-[0.1] backdrop-blur-sm items-center ${
-        model == "bot" ? "z-10 visible" : "z-[-1] invisible"
+        model === "bot" ? "z-10 visible" : "z-[-1] invisible"
       }`}
     >
       <div
@@ -152,12 +152,12 @@ export default function AddBot({
                   <div
                     key={id}
                     onClick={() =>
-                      id == 3 && setComponent({ ...component, state: true })
+                      id === 3 && setComponent({ ...component, state: true })
                     }
                     className={`w-fit h-8 p-[7px] justify-center items-center flex text-md font-mulish cursor-pointer ${
-                      id == 4
+                      id === 4
                         ? "text-red-600 bg-rose-100"
-                        : component.state && id == 3
+                        : component.state && id === 3
                         ? "hidden"
                         : "bg-secondary   bg-opacity-10 text-secondary"
                     }`}
@@ -238,7 +238,7 @@ export const AddBotDialog = ({
   return (
     <main
       className={`w-fit h-[473px] bg-white rounded-[5px] px-7 flex flex-col gap-3 pt-3 pb-8 shadow-lg ${
-        model == "bot" ? "" : "hidden"
+        model === "bot" ? "" : "hidden"
       }`}
     >
       <div
@@ -345,7 +345,7 @@ export const AddBotDialog = ({
                   // onClick={() => id < 1 && setGenerate(true)}
                   icon={icon}
                   title={name}
-                  classname={`${id == 3 && "!text-red-600 !bg-rose-100"}`}
+                  classname={`${id === 3 && "!text-red-600 !bg-rose-100"}`}
                 />
               );
             })}

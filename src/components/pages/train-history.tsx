@@ -12,7 +12,7 @@ export default function TrainHistory() {
   const params: Params = useParams();
   const { chatbot } = useSelector((state: any) => state.context);
   const story = chatbot?.stories?.find(
-    (story: any, idx: any) => idx == params.slug
+    (story: any, idx: any) => idx === params.slug
   );
 
   const props = { trainBot, setTrainBot };
@@ -75,11 +75,11 @@ const TrainBotDialog = () => {
         {["Reload model", "Test model"].map((name, idx) => (
           <Buttons.primary
             key={idx}
-            onClick={() => idx == 1 && setTestModel(true)}
+            onClick={() => idx === 1 && setTestModel(true)}
             classname="relative"
             title={name}
           >
-            {idx == 1 && (
+            {idx === 1 && (
               <TestModel testModel={testModel} setTestModel={setTestModel} />
             )}
           </Buttons.primary>
@@ -92,9 +92,9 @@ const TrainBotDialog = () => {
               <div
                 key={idx}
                 className={`text-md font-semibold font-mulish text-primary ${
-                  idx == 0
+                  idx === 0
                     ? "col-span-3"
-                    : idx == 4
+                    : idx === 4
                     ? "col-span-1"
                     : "col-span-2 "
                 }`}

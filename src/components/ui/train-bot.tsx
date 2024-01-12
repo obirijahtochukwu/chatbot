@@ -64,11 +64,11 @@ export default function TrainBot({
           {["Reload model", "Test model"].map((name, idx) => (
             <Buttons.primary
               key={idx}
-              onClick={() => idx == 1 && setTestModel(true)}
+              onClick={() => idx === 1 && setTestModel(true)}
               classname="relative"
               title={name}
             >
-              {idx == 1 && (
+              {idx === 1 && (
                 <TestModel testModel={testModel} setTestModel={setTestModel} />
               )}
             </Buttons.primary>
@@ -81,9 +81,9 @@ export default function TrainBot({
                 <div
                   key={idx}
                   className={`text-md font-semibold font-mulish text-primary ${
-                    idx == 0
+                    idx === 0
                       ? "col-span-3"
-                      : idx == 4
+                      : idx === 4
                       ? "col-span-1"
                       : "col-span-2 "
                   }`}

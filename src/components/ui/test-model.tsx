@@ -45,7 +45,7 @@ export default function TestModel({
             {msgs.map((msg) => (
               <div
                 className={`py-[14px] w-[300px] px-5 rounded-xl text-md font-normal tracking-[0.35px] font-body ${
-                  name == "bot"
+                  name === "bot"
                     ? "text-primary bg-white"
                     : "ml-auto bg-secondary text-white"
                 }`}
