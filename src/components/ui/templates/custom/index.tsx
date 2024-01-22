@@ -18,7 +18,11 @@ export const Custom = ({ story }: { story: story }) => {
 
   return (
     <>
-      <main className="w-fit top-full left-[calc((100%-299px)/2)] flex gap-6 h-fit px-[41px] py-[25px] bg-white shadow">
+      <main
+        className={`${
+          story.interactions.length < 2 ? "flex" : "hidden"
+        } w-fit top-full left-[calc((100%-299px)/2)] gap-6 h-fit px-[41px] py-[25px] bg-white shadow`}
+      >
         {options.map(({ name, img }: { name: string; img: string }) => {
           return (
             <div

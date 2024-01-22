@@ -13,16 +13,17 @@ export default function EditUserMsg({
   index,
   messages,
   story,
-  model,
-  setModel,
+  editModel,
+  setEditModel,
+  deleteMsg,
 }: {
   index: number;
   messages: msg[];
   story: story;
-  model: string;
-  setModel: React.Dispatch<string>;
+  editModel: string;
+  setEditModel: React.Dispatch<string>;
+  deleteMsg: any;
 }) {
-  const [initialRender, setInitialRender] = useState(true);
   const [generate, setGenerate] = useState(false);
   const [msgs, setMsgs] = useState<msg[]>(messages);
   const [modal, setModal] = useState(false);
@@ -35,7 +36,7 @@ export default function EditUserMsg({
 
   const closeModal = () => {
     edit_msg({ ...props });
-    setModel("");
+    setEditModel("");
   };
 
   const props = {
@@ -53,10 +54,19 @@ export default function EditUserMsg({
     dispatch,
   };
 
+  const handleSubmit = (id: number) => {
+    if (id < 1) {
+      setGenerate(true);
+    } else {
+      deleteMsg();
+      setEditModel("");
+    }
+  };
+
   return (
     <main
       className={`fixed top-0 duration-300 left-0 h-screen w-screen flex justify-center bg-primary bg-opacity-[0.1] backdrop-blur-sm items-center ${
-        model === "user" ? "z-10 visible" : "z-[-1] invisible"
+        editModel === "user" ? "z-10 visible" : "z-[-1] invisible"
       }`}
     >
       <div
@@ -73,7 +83,8 @@ export default function EditUserMsg({
           <div className="text-primary capitalize text-md font-mulish leading-[18px]">
             user
           </div>
-        </div>
+        </div>{" "}
+        edit
         {generate ? (
           <GeneratePhrases msgs={msgs} setGenerate={setGenerate} />
         ) : (
@@ -85,7 +96,7 @@ export default function EditUserMsg({
                 {["Generate training phrases", "Delete"].map((name, id) => (
                   <div
                     key={id}
-                    onClick={() => (id < 1 ? setGenerate(true) : null)}
+                    onClick={() => handleSubmit(id)}
                     className={`w-fit h-8 p-[7px] justify-center items-center flex text-md font-mulish cursor-pointer ${
                       id > 1
                         ? "text-red-600 bg-rose-100"

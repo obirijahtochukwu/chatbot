@@ -9,6 +9,7 @@ export default function BotUser({
     { name: "bot", img: "/media/story/chatgpt robot.svg" },
     { name: "user", img: "/media/story/user icon.svg" },
   ];
+
   return (
     <main className="w-fit absolute top-full left-[calc((100%-299px)/2)] flex gap-6 h-fit px-[41px] py-[25px] bg-white shadow">
       {options.map(({ name, img }: { name: string; img: string }) => {

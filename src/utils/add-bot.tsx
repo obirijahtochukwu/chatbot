@@ -2,8 +2,7 @@ import { chatbot, interaction, msg, story } from "@/utils/types";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
-import { getChatbots } from "@/redux/slice";
-import { addMsg, add_msg } from "@/utils/functions";
+import { add_msg } from "@/utils/functions";
 import { Icons } from "@/components/ui/icons";
 import MsgInput from "@/components/ui/msg-input";
 import Msgs from "@/components/ui/msgs";
@@ -18,9 +17,7 @@ export default function AddBot({
   model: string;
   setModel: React.Dispatch<string>;
 }) {
-  const [msgs, setMsgs] = useState<msg[]>(
-    story?.interactions[0]?.messages || []
-  );
+  const [msgs, setMsgs] = useState<msg[]>([]);
   const dispatch = useDispatch();
 
   const [modal, setModal] = useState(false);

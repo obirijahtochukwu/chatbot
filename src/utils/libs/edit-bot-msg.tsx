@@ -13,14 +13,16 @@ export default function EditBotMsg({
   index,
   messages,
   story,
-  model,
-  setModel,
+  editModel,
+  setEditModel,
+  deleteMsg,
 }: {
   index: number;
   messages: msg[];
   story: story;
-  model: string;
-  setModel: React.Dispatch<string>;
+  editModel: string;
+  setEditModel: React.Dispatch<string>;
+  deleteMsg: any;
 }) {
   const [msgs, setMsgs] = useState<msg[]>(messages);
   const dispatch = useDispatch();
@@ -29,21 +31,34 @@ export default function EditBotMsg({
   const [inputVal, setInputVal] = useState("");
   const chatbots = useSelector((state: any) => state.context.chatbots);
   const params = useParams();
+  // const buttons = [
+  //   { icon: <Icons.share /> },
+  //   { name: "Delete" },
+  //   { name: "Submit" },
+  // ];
+
   const buttons = [
+    { icon: <Icons.picture />, fileType: "image/*" },
+    { icon: <Icons.media />, fileType: "video/*" },
     { icon: <Icons.share /> },
+    { name: "Components" },
     { name: "Delete" },
     { name: "Submit" },
   ];
-  console.log("");
+
   const closeModal = () => {
     edit_msg({ ...props });
     // setMsgs([]);
-    setModel("");
+    setEditModel("");
   };
 
   const handleSubmit = (id: number) => {
-    if (id == 0) {
+    if (id == 2) {
       setModal(true);
+    } else if (id == 4) {
+      deleteMsg();
+      setEditModel("");
+    } else {
     }
   };
 
@@ -62,16 +77,10 @@ export default function EditBotMsg({
     dispatch,
   };
 
-  // useEffect(() => {
-  //   if (model === "user") {
-  //     add_msg({ ...props });
-  //   }
-  // }, [msgs]);
-
   return (
     <main
       className={`fixed top-0 duration-300 left-0 h-screen w-screen flex justify-center bg-primary bg-opacity-[0.1] backdrop-blur-sm items-center ${
-        model == "bot" ? "z-10 visible" : "z-[-1] invisible"
+        editModel == "bot" ? "z-10 visible" : "z-[-1] invisible"
       }`}
     >
       <div
@@ -101,7 +110,7 @@ export default function EditBotMsg({
                   key={id}
                   onClick={() => handleSubmit(id)}
                   className={`w-fit h-8 p-[7px] justify-center items-center flex text-md font-mulish cursor-pointer ${
-                    id == 1
+                    id == 4
                       ? "text-red-600 bg-rose-100"
                       : "bg-secondary bg-opacity-10 text-secondary"
                   }`}

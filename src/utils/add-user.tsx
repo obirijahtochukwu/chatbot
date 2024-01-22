@@ -1,9 +1,8 @@
-"use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { msg, story } from "@/utils/types";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "next/navigation";
-import { addMsg, add_msg } from "@/utils/functions";
+import { add_msg } from "@/utils/functions";
 import { Icons } from "@/components/ui/icons";
 import { GeneratePhrases } from "@/components/ui/generate-phrases";
 import MsgInput from "@/components/ui/msg-input";
