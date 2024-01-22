@@ -1,18 +1,20 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { Icons } from "../ui/icons";
-import { usePathname, useRouter } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
 import Link from "next/link";
+import { logout } from "@/utils/functions";
+import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 
 export default function Sidebar() {
   const pathname = usePathname();
   const [url, setUrl] = useState("");
   const showTab = useSelector((state: any) => state.context.activePage);
-  console.log(showTab);
-  const params =
-    typeof window != "undefined" &&
-    JSON.parse(localStorage.getItem("story_url"));
+  // const params =
+  // typeof window != "undefined" &&
+  // JSON.parse(localStorage.getItem("story_url"));
+  const params: Params = useParams();
 
   const pages = [
     {
@@ -21,7 +23,7 @@ export default function Sidebar() {
           color={
             url === "/"
               ? "#fff"
-              : url === `/dashboard/conversations`
+              : url === `/dashboard/${params.slug}/conversations`
               ? "#fff"
               : "#000"
           }
@@ -32,9 +34,22 @@ export default function Sidebar() {
       disable: true,
     },
     {
-      icon: <Icons.story color={url === `/story/${params}` ? "#fff" : "#000"} />,
+      icon: (
+        <Icons.story
+          color={
+            url ===
+            `/story/${params.slug?.length > 0 && params.slug[0]}/${
+              params.slug?.length > 0 && params.slug[1]
+            }`
+              ? "#fff"
+              : "#000"
+          }
+        />
+      ),
       title: "story",
-      path: `/story/${params}`,
+      path: `/story/${params.slug?.length > 0 && params.slug[0]}/${
+        params.slug?.length > 0 && params.slug[1]
+      }`,
       disable: showTab ? true : false,
     },
     {
@@ -89,12 +104,6 @@ export default function Sidebar() {
       path: "/settings",
       disable: !showTab ? true : false,
     },
-    {
-      icon: <Icons.logout color={url.includes("/logout") ? "#fff" : ""} />,
-      title: "logout",
-      path: "/logout",
-      disable: true,
-    },
   ];
 
   const router = useRouter();
@@ -119,6 +128,7 @@ export default function Sidebar() {
           ({ icon, title, path, disable }) =>
             disable && (
               <div
+                key={title}
                 onClick={() => router.push(path)}
                 className={`w-full pl-6 pr-2 py-3.5 rounded-full justify-start items-center duration-300 gap-3.5 inline-flex hover:shadow ${
                   url === path
@@ -133,6 +143,13 @@ export default function Sidebar() {
               </div>
             )
         )}
+        <div
+          onClick={logout}
+          className={`w-full pl-6 pr-2 py-3.5 rounded-full justify-start items-center duration-300 gap-3.5 inline-flex hover:shadow text-primary cursor-pointer`}
+        >
+          <Icons.logout />
+          <div className="capitalize text-xs font-semibold">logout</div>
+        </div>
       </main>
     </aside>
   );

@@ -13,13 +13,8 @@ export default function TestModel({
   useEffect(() => {
     if (ref.current.getBoundingClientRect().bottom > window.innerHeight) {
       setDivPos(ref.current.getBoundingClientRect().bottom);
-      console.log(window.innerHeight);
     }
   }, [testModel]);
-
-  useEffect(() => {
-    console.log(divPos);
-  }, [divPos]);
 
   return (
     <main

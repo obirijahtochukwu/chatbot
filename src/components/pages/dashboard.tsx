@@ -2,15 +2,24 @@
 import React, { useState } from "react";
 import Pagination from "../ui/pagination";
 import { useRouter } from "next/navigation";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addChatbot } from "@/redux/slice";
+import { Toast } from "../ui/toast";
+import CreateBot from "../ui/create-bot";
+import { chatbot } from "@/utils/types";
 
 export default function Dashboard() {
+  const [modal, setModal] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const chatbots = useSelector((state: any) => state.context.chatbots);
   const totalPages = Math.ceil(chatbots.length / 4);
+
+  const { toast, ToastContainer } = Toast();
 
   const dispatch = useDispatch();
   const router = useRouter();
+
+  const props = { modal, setModal };
 
   return (
     <article className="flex justify-between">
@@ -18,13 +27,14 @@ export default function Dashboard() {
         <div className="text-primary text-2xl font-medium">Chatbots</div>
         <section className="flex gap-7 mb-12 flex-col mt-7">
           {chatbots.map(
-            (chatbot, idx) =>
+            (chatbot: chatbot, idx: number) =>
               idx < currentPage * 4 &&
               idx > currentPage * 4 - 5 && (
                 <main
+                  key={idx}
                   onClick={() => {
                     dispatch(addChatbot(chatbot));
-                    router.push("/dashboard/conversations");
+                    router.push(`/dashboard/${idx}/conversations`);
                   }}
                   className="text-black cursor-pointer text-base font-medium flex justify-between items-center"
                 >
@@ -33,7 +43,7 @@ export default function Dashboard() {
                       className="w-14 h-14 rounded-full"
                       src="/media/dashboard/dashboard-1.svg"
                     />
-                    <div className="opacity-70">{chatbot.name}</div>
+                    <div className="opacity-70 capitalize">{chatbot.name}</div>
                   </div>
                   <div className="opacity-70">{chatbot.date}</div>
                   <div className="opacity-70">{chatbot.percent}</div>
@@ -54,40 +64,47 @@ export default function Dashboard() {
           setCurrentPage={setCurrentPage}
         />
       </main>
-      <div className="w-40 h-14 px-5 py-5 rounded-sm border text-center mt-11 text-secondary text-base border-secondary justify-center cursor-pointer items-center flex font-mulish">
+      <div
+        onClick={() => setModal(true)}
+        className="w-40 h-14 px-5 py-5 rounded-sm border text-center mt-11 text-secondary text-base border-secondary justify-center cursor-pointer items-center flex font-mulish"
+      >
         Create Chatbot
       </div>
+
+      {/*------ modals &  more ------*/}
+      <ToastContainer />
+      <CreateBot {...props} />
     </article>
   );
 }
 
 const interactions = [
-  { name: "bot", messages: ["Hi How can I help you?"] },
+  { name: "bot", messages: [{ text: "Hi How canhh I help you?" }] },
   {
     name: "user",
     messages: [
-      "What time is the next event?",
-      "When will be holded the event?",
-      "When is the next event?",
-      "When",
+      { text: "What time is the next event?" },
+      { text: "When will be holded the event?" },
+      { text: "When is the next event?" },
+      { text: "When" },
     ],
   },
 ];
 
-const stories = [
-  { name: "Story A", type: "Custom", interactions },
-  { name: "Story B", type: "Q&A", interactions },
-  { name: "Story C", type: "Rule", interactions },
-  { name: "Story D", type: "Custom", interactions },
-  { name: "Story E", type: "Q&A", interactions },
-  { name: "Story F", type: "Rule", interactions },
+export const stories = [
+  { name: "Story A", template: "Q&R", interactions },
+  // { name: "Story B", type: "Q&A", interactions },
+  // { name: "Story C", type: "Rule", interactions },
+  { name: "Story D", type: "Custom", interactions: [] },
+  // { name: "Story E", type: "Q&A", interactions },
+  // { name: "Story F", type: "Rule", interactions },
 ];
 
-const chatbots = [
-  { name: "Chatbot A", date: "Jan 16, 2023", percent: "80%", stories },
-  { name: "Chatbot B", date: "Jan 16, 2023", percent: "0%", stories },
-  { name: "Chatbot C", date: "Jan 16, 2023", percent: "100%", stories },
-  { name: "Chatbot D", date: "Jan 16, 2023", percent: "0%", stories },
-  { name: "Chatbot E", date: "Jan 16, 2023", percent: "80%", stories },
-  { name: "Chatbot F", date: "Jan 16, 2023", percent: "0%", stories },
-];
+// const chatbots = [
+//   { name: "Chatbot A", date: "Jan 16, 2023", percent: "80%", stories },
+//   // { name: "Chatbot B", date: "Jan 16, 2023", percent: "0%", stories },
+//   // { name: "Chatbot C", date: "Jan 16, 2023", percent: "100%", stories },
+//   // { name: "Chatbot D", date: "Jan 16, 2023", percent: "0%", stories },
+//   // { name: "Chatbot E", date: "Jan 16, 2023", percent: "80%", stories },
+//   // { name: "Chatbot F", date: "Jan 16, 2023", percent: "0%", stories },
+// ];

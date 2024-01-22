@@ -9,11 +9,11 @@ export default function SelectComponent({
   component,
   setComponent,
 }: {
-  component: component_state;
-  setComponent: React.Dispatch<component_state>;
+  component?: component_state;
+  setComponent?: React.Dispatch<component_state> | any;
 }) {
   return (
-    <div className={component.state ? "flex flex-col gap-3" : "hidden"}>
+    <div className={component?.state ? "flex flex-col gap-3" : "hidden"}>
       <div className="font-body text-primary font-medium text-[26px]">
         Components
       </div>
@@ -22,7 +22,7 @@ export default function SelectComponent({
           <div
             onClick={() => setComponent({ ...component, value: name })}
             className={`font-body w-full rounded-[200px] items-center flex justify-between duration-150 font-normal text-md px-2.5 cursor-pointer ${
-              component.value === name
+              component?.value === name
                 ? "text-white py-3 bg-secondary h-[38px]"
                 : "text-primary"
             }`}

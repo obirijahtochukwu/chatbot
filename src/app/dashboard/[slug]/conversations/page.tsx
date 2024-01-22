@@ -1,9 +1,10 @@
+import Wrapper from "@/components/layout";
 import Conversations from "@/components/pages/conversations";
 
 export default function Index() {
   return (
-    <main>
+    <Wrapper>
       <Conversations />
-    </main>
+    </Wrapper>
   );
 }

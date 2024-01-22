@@ -24,15 +24,13 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Mulish&display=swap"
         />
-         <link
+        <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Inter&display=swap"
         />
       </Head>
       <body className={inter.className}>
-        <Providers>
-          <Wrapper>{children}</Wrapper>
-        </Providers>
+        {children}
       </body>
     </html>
   );

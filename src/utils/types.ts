@@ -13,14 +13,15 @@ export interface chatbot {
   name?: string;
   date?: string;
   percent?: string;
-  stories?: story;
+  stories?: story | never[];
 }
 export interface story {
-  name?: string;
-  type?: string;
-  interactions?: interaction[];
+  name: string;
+  template?: string;
+  interactions: interaction[];
 }
 export interface interaction {
+  id?: string;
   name?: string;
   messages?: string[] | any;
 }
@@ -66,3 +67,4 @@ export interface settings {
 }
 
 export type button = React.ButtonHTMLAttributes<HTMLButtonElement>;
+// nn

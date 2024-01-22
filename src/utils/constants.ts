@@ -172,3 +172,23 @@ export const icons_setting = [
   { name: "Open button icon" },
   { name: "Close button icon" },
 ];
+
+const date = new Date();
+export const formattedDate = date.toLocaleDateString("en-US", {
+  month: "short",
+  day: "numeric",
+  year: "numeric",
+});
+
+export const interactions = [
+  { name: "bot", messages: ["Hi How can I help you?"] },
+  {
+    name: "user",
+    messages: [
+      "What time is the next event?",
+      "When will be holded the event?",
+      "When is the next event?",
+      "When",
+    ],
+  },
+];
