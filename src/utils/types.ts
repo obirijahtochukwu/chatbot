@@ -24,6 +24,7 @@ export interface interaction {
   id?: string;
   name?: string;
   messages?: string[] | any;
+  component?: string;
 }
 
 export interface component {
@@ -42,6 +43,7 @@ export interface FileInfo {
 }
 
 export interface msg {
+  id?: string;
   text?: string;
   file?: FileInfo[] | any;
   component?: string;

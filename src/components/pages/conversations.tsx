@@ -17,9 +17,8 @@ export default function Conversations() {
   const [isModal, setIsModal] = useState(false);
   const [template, setTemplate] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const { stories } = chatbots?.find(
-    (story: any, idx: any) => idx === +params.slug
-  );
+  const { stories } =
+    chatbots?.find((story: any, idx: any) => idx === +params.slug) || [];
   const totalPages = Math.ceil(stories?.length / 4);
   const router = useRouter();
 

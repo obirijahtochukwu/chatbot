@@ -4,6 +4,7 @@ import { createChatbot } from "@/redux/slice";
 import { formattedDate } from "@/utils/constants";
 import { chatbot } from "@/utils/types";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 export default function CreateBot({
   modal,
@@ -12,13 +13,12 @@ export default function CreateBot({
   modal: boolean;
   setModal: React.Dispatch<boolean>;
 }) {
-  const { toast, ToastContainer } = Toast();
   const [inputVal, setInputVal] = useState("");
   const dispatch = useDispatch();
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    toast("Chatbot created!");
+    toast.success("Chatbot created!");
     const chatbot: chatbot = {
       name: inputVal,
       date: formattedDate,
@@ -40,7 +40,7 @@ export default function CreateBot({
         modal ? "z-10 visible" : "z-[-1] invisible"
       }`}
     >
-      <ToastContainer />
+      {/* <ToastContainer /> */}
       <form
         onSubmit={handleSubmit}
         className={`px-6 py-5 w-96 bg-white rounded-[5px] relative flex flex-col gap-3 pt-3 pb-8 shadow-lg `}

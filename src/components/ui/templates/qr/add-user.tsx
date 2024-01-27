@@ -28,7 +28,15 @@ export default function AddUser({
   const [inputVal, setInputVal] = useState("");
   const chatbots = useSelector((state: any) => state.context.chatbots);
   const params = useParams();
-  const buttons = [{ icon: <Icons.share /> }, { name: "Delete" }];
+
+  const handleSubmit = (id: number) => {
+    if (id == 0) {
+      setGenerate(true);
+    } else {
+      addMsg({ ...props });
+      setModel("");
+    }
+  };
 
   const props = {
     name: "user",
@@ -43,12 +51,6 @@ export default function AddUser({
     story,
     dispatch,
   };
-
-  useEffect(() => {
-    if (msgs.length > 1) {
-      addMsg({ ...props });
-    }
-  }, [msgs]);
 
   return (
     <main
@@ -77,17 +79,13 @@ export default function AddUser({
           <section className="flex gap-2.5 items-end">
             <div className="flex gap-3 flex-col">
               <MsgInput {...props} />
-              <Msgs msgs={msgs} />
+              <Msgs {...props} />
               <div className="flex gap-2.5 justify-end">
-                {["Generate training phrases", "Delete"].map((name, id) => (
+                {["Generate training phrases", "Submit"].map((name, id) => (
                   <div
                     key={id}
-                    onClick={() => (id < 1 ? setGenerate(true) : null)}
-                    className={`w-fit h-8 p-[7px] justify-center items-center flex text-md font-mulish cursor-pointer ${
-                      id > 1
-                        ? "text-red-600 bg-rose-100"
-                        : "bg-secondary   bg-opacity-10 text-secondary"
-                    }`}
+                    onClick={() => handleSubmit(id)}
+                    className={`w-fit cursor-pointer h-8 p-[7px] justify-center items-center flex text-md font-mulish cursor-pointertext-red-600 bg-secondary bg-opacity-10 text-secondary`}
                   >
                     {name}
                   </div>

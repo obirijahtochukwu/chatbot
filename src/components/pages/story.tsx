@@ -8,6 +8,7 @@ import TrainBot from "../ui/train-bot";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import QAndR from "../ui/templates/qr";
 import { Custom } from "../ui/templates/custom";
+import { Rule } from "../ui/templates/rule";
 
 export default function Story() {
   const params: Params = useParams();
@@ -21,7 +22,6 @@ export default function Story() {
   const story: story = chatbot?.stories?.find(
     (story: any, idx: any) => idx === +params.slug[1]
   );
-  console.log(chatbot);
 
   useEffect(() => {
     //@ts-ignore
@@ -41,6 +41,7 @@ export default function Story() {
         <div className="w-fit relative top-[-32px] mx-auto p-[2.5px] flex items-center h-fit rounded-[75px] mb-8 border border-secondary">
           {["Flow", "Install"].map((name: string) => (
             <div
+              key={name}
               onClick={() => setActiveTab(name)}
               className={`w-[72px] h-[30px] px-[21px] py-[9px] cursor-pointer rounded-[75px] justify-center duration-200 items-center flex   text-[14.87px] ${
                 activeTab == name
@@ -54,10 +55,12 @@ export default function Story() {
         </div>
         {activeTab === "Flow" ? (
           <>
-            {story?.template == "Q&R" ? (
+            {story?.template?.toLowerCase() == "q&r" ? (
               <QAndR story={story} />
-            ) : (
+            ) : story?.template?.toLowerCase() == "custom" ? (
               <Custom story={story} />
+            ) : (
+              <Rule story={story} />
             )}
           </>
         ) : (
@@ -88,6 +91,7 @@ const Install = () => {
           <App
             logo={logo}
             idx={idx}
+            key={idx}
             isModal={isModal}
             setIsModal={setIsModal}
             name={name}

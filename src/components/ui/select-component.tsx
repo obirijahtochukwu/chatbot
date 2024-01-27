@@ -20,6 +20,7 @@ export default function SelectComponent({
       <div className="flex w-[337px] px-2.5 py-[18px] h-[175px] flex-col justify-between bg-neutral">
         {components.map(({ name, value }) => (
           <div
+            key={name}
             onClick={() => setComponent({ ...component, value: name })}
             className={`font-body w-full rounded-[200px] items-center flex justify-between duration-150 font-normal text-md px-2.5 cursor-pointer ${
               component?.value === name

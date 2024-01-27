@@ -5,19 +5,12 @@ import React from "react";
 import { Interaction } from "./interactions";
 
 export default function QAndR({ story }: { story: story }) {
-  console.log(story?.interactions);
-
   return (
-    <>
-      {story?.interactions.map(({ name, messages }: interaction) => {
+    <div key={story.name}>
+      {story?.interactions.map(({ name, messages }) => {
         const props = { story, name, messages };
         return <Interaction key={name} {...props} />;
       })}
-      {story?.interactions.length < 1 &&
-        interactions.map(({ name, messages }: interaction) => {
-          const props = { story, name, messages };
-          return <Interaction {...props} />;
-        })}
-    </>
+    </div>
   );
 }

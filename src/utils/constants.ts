@@ -192,3 +192,6 @@ export const interactions = [
     ],
   },
 ];
+
+// unique id
+export const uid = () => Math.random().toString(16).slice(2, 10) + Date.now();

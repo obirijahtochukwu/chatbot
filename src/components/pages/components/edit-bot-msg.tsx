@@ -1,62 +1,59 @@
-import { msg, story } from "@/utils/types";
+import { component_state, interaction, msg, story } from "@/utils/types";
 import { useState } from "react";
 import { useParams } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
-import { getChatbots } from "@/redux/slice";
-import { addMsg, add_msg, edit_msg } from "@/utils/functions";
+import { edit_msg } from "@/utils/functions";
 import { Icons } from "@/components/ui/icons";
 import MsgInput from "@/components/ui/msg-input";
 import Msgs from "@/components/ui/msgs";
 import AddLink from "@/components/ui/add-link";
+import SelectComponent from "@/components/ui/select-component";
+import { SelectFile } from "@/components/ui/select-file";
 
 export default function EditBotMsg({
+  interaction,
   index,
-  messages,
   story,
   editModel,
   setEditModel,
   deleteMsg,
-}: {
+}: // deleteMsg,
+{
+  interaction: interaction;
   index: number;
-  messages: msg[];
   story: story;
   editModel: string;
   setEditModel: React.Dispatch<string>;
   deleteMsg: any;
 }) {
-  const [msgs, setMsgs] = useState<msg[]>(messages);
+  const [msgs, setMsgs] = useState<msg[]>(interaction.messages);
   const dispatch = useDispatch();
 
   const [modal, setModal] = useState(false);
   const [inputVal, setInputVal] = useState("");
   const chatbots = useSelector((state: any) => state.context.chatbots);
   const params = useParams();
-  // const buttons = [
-  //   { icon: <Icons.share /> },
-  //   { name: "Delete" },
-  //   { name: "Submit" },
-  // ];
 
   const buttons = [
     { icon: <Icons.picture />, fileType: "image/*" },
     { icon: <Icons.media />, fileType: "video/*" },
     { icon: <Icons.share /> },
-    { name: "Components" },
     { name: "Delete" },
     { name: "Submit" },
   ];
 
   const closeModal = () => {
-    edit_msg({ ...props });
-    // setMsgs([]);
     setEditModel("");
   };
 
   const handleSubmit = (id: number) => {
     if (id == 2) {
       setModal(true);
-    } else if (id == 4) {
+    } else if (id == 3) {
       deleteMsg();
+      setEditModel("");
+    } else if (id == 4 && msgs.length > 0) {
+      edit_msg({ ...props });
       setEditModel("");
     } else {
     }
@@ -64,7 +61,7 @@ export default function EditBotMsg({
 
   const props = {
     index,
-    name: "bot",
+    interaction,
     modal,
     setModal,
     msgs,
@@ -80,7 +77,7 @@ export default function EditBotMsg({
   return (
     <main
       className={`fixed top-0 duration-300 left-0 h-screen w-screen flex justify-center bg-primary bg-opacity-[0.1] backdrop-blur-sm items-center ${
-        editModel == "bot" ? "z-10 visible" : "z-[-1] invisible"
+        editModel == interaction.component ? "z-10 visible" : "z-[-1] invisible"
       }`}
     >
       <div
@@ -101,23 +98,31 @@ export default function EditBotMsg({
 
         <section className="flex gap-2.5 items-end">
           <div className="flex gap-3 flex-col">
+            <div className="text-primary text-md font-normal font-body leading-[18px] mt-3">
+              {interaction.component}
+            </div>{" "}
             <MsgInput {...props} />
-            <Msgs msgs={msgs} />
-
+            <Msgs {...props} />
             <footer className="flex gap-2.5 justify-end">
-              {buttons.map(({ name, icon }, id) => (
-                <div
-                  key={id}
-                  onClick={() => handleSubmit(id)}
-                  className={`w-fit h-8 p-[7px] justify-center items-center flex text-md font-mulish cursor-pointer ${
-                    id == 4
-                      ? "text-red-600 bg-rose-100"
-                      : "bg-secondary bg-opacity-10 text-secondary"
-                  }`}
-                >
-                  {name} {icon}
-                </div>
-              ))}
+              {buttons.map(({ name, icon, fileType }, id) => {
+                const props = { id, icon, fileType, msgs, setMsgs };
+                if (id < 2) {
+                  return <SelectFile key={id} {...props} />;
+                }
+                return (
+                  <div
+                    key={id}
+                    onClick={() => handleSubmit(id)}
+                    className={`w-fit h-8 p-[7px] justify-center items-center flex text-md font-mulish cursor-pointer ${
+                      id == 3
+                        ? "text-red-600 bg-rose-100"
+                        : "bg-secondary bg-opacity-10 text-secondary"
+                    }`}
+                  >
+                    {name} {icon}
+                  </div>
+                );
+              })}
             </footer>
           </div>
         </section>

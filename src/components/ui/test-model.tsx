@@ -35,10 +35,11 @@ export default function TestModel({
       </div>
 
       <section className="flex mt-12 flex-col text-start gap-6">
-        {chats.map(({ name, msgs }) => (
-          <div className="flex flex-col gap-[6px] ">
-            {msgs.map((msg) => (
+        {chats.map(({ name, msgs }, idx) => (
+          <div key={idx} className="flex flex-col gap-[6px] ">
+            {msgs.map((msg, idx) => (
               <div
+                key={idx}
                 className={`py-[14px] w-[300px] px-5 rounded-xl text-md font-normal tracking-[0.35px] font-body ${
                   name === "bot"
                     ? "text-primary bg-white"

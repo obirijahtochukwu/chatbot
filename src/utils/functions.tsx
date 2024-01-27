@@ -1,6 +1,8 @@
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
-import { chatbot, interaction, msg, story } from "./types";
+import { chatbot, component_state, interaction, msg, story } from "./types";
 import { getChatbots } from "@/redux/slice";
+import { uid } from "./constants";
+import { toast } from "react-toastify";
 
 export const handleCopy = (url: string) => {
   navigator.clipboard
@@ -86,6 +88,7 @@ export const addMsg = ({
 };
 
 export const add_msg = ({
+  component_name,
   name,
   chatbots,
   params,
@@ -93,6 +96,7 @@ export const add_msg = ({
   story,
   dispatch,
 }: {
+  component_name?: string;
   name: string;
   chatbots: chatbot[];
   params: Params;
@@ -100,7 +104,7 @@ export const add_msg = ({
   story: story;
   dispatch: React.Dispatch<any>;
 }) => {
-  const id = new Date();
+  const id = `${uid()}`;
 
   // find chatbot
   const chatbot: chatbot | any = chatbots?.find(
@@ -108,7 +112,7 @@ export const add_msg = ({
   );
 
   // new interaction
-  const interaction = { id, name, messages: msgs };
+  const interaction = { id, name, messages: msgs, component: component_name };
   const newInteractions = story.interactions;
 
   // add new interaction to stories
@@ -127,28 +131,30 @@ export const add_msg = ({
     bot.name == _chatbot.name ? _chatbot : bot
   );
 
-  console.log(interaction);
-  console.log(newInteractions);
-
   dispatch(getChatbots(_chatbots));
+  toast.success(
+    `${name == "bot" ? "Intent" : "Response"} created successfully!`
+  );
 };
 
 export const edit_msg = ({
   index,
-  name,
+  interaction,
   chatbots,
   params,
   msgs,
   story,
   dispatch,
+  component,
 }: {
   index: number;
-  name: string;
+  interaction: interaction;
   chatbots: chatbot[];
   params: Params;
   msgs: msg[];
   story: story;
   dispatch: React.Dispatch<any>;
+  component?: component_state;
 }) => {
   // find chatbot
   const chatbot: chatbot | any = chatbots?.find(
@@ -156,9 +162,13 @@ export const edit_msg = ({
   );
 
   // new interaction
-  const interaction = { name, messages: msgs };
+  const _interaction = {
+    ...interaction,
+    messages: msgs,
+    component: component || interaction.component,
+  };
   const newInteractions = story.interactions.map((item: chatbot, idx) =>
-    idx == index ? interaction : item
+    idx == index ? _interaction : item
   );
 
   // add new interaction to stories
@@ -198,8 +208,10 @@ export const delete_msg = ({
 }) => {
   // find chatbot
   const chatbot: chatbot | any = chatbots?.find(
-    (bot: any, idx: any) => idx === +params.slug[0]
+    (bot: any, idx: any) => idx == +params.slug[0]
   );
+
+  console.log(story);
 
   // delete interaction
   const newInteractions = story.interactions.filter(

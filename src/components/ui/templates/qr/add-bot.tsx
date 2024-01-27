@@ -27,7 +27,16 @@ export default function AddBot({
   const [inputVal, setInputVal] = useState("");
   const chatbots = useSelector((state: any) => state.context.chatbots);
   const params = useParams();
-  const buttons = [{ icon: <Icons.share /> }, { name: "Delete" }];
+  const buttons = [{ icon: <Icons.share /> }, { name: "Submit" }];
+
+  const handleSubmit = (id: number) => {
+    if (id == 0) {
+      setModal(true);
+    } else {
+      addMsg({ ...props });
+      setModel("");
+    }
+  };
 
   const props = {
     name: "bot",
@@ -42,11 +51,6 @@ export default function AddBot({
     story,
     dispatch,
   };
-
-  useEffect(() => {
-  if (msgs.length > 1) {
-    addMsg({ ...props });}
-  }, [msgs]);
 
   return (
     <main
@@ -73,17 +77,14 @@ export default function AddBot({
         <section className="flex gap-2.5 items-end">
           <div className="flex gap-3 flex-col">
             <MsgInput {...props} />
-            <Msgs msgs={msgs} />
-
+            <Msgs {...props} />
             <footer className="flex gap-2.5 justify-end">
-              {buttons.map(({ name, icon }, id) => (
+              {buttons.map(({ name, icon }, idx) => (
                 <div
-                  key={id}
-                  onClick={() => (id == 0 ? setModal(true) : null)}
-                  className={`w-fit h-8 p-[7px] justify-center items-center flex text-md font-mulish cursor-pointer ${
-                    id == 1
-                      ? "text-red-600 bg-rose-100"
-                      : "bg-secondary bg-opacity-10 text-secondary"
+                  key={idx}
+                  onClick={() => handleSubmit(idx)}
+                  className={`w-fit h-8 p-[7px] justify-center items-center text-md font-mulish bg-secondary cursor-pointer bg-opacity-10 text-secondary ${
+                    idx == 2 && msgs.length < 1 ? "hidden" : "flex"
                   }`}
                 >
                   {name} {icon}

@@ -1,3 +1,4 @@
+import { uid } from "@/utils/constants";
 import { msg } from "@/utils/types";
 import React from "react";
 
@@ -15,7 +16,7 @@ export default function MsgInput({
   const handleSubmit = (e: any) => {
     e.preventDefault();
     if (inputVal) {
-      setMsgs([...msgs, { text: inputVal }]);
+      setMsgs([...msgs, { text: inputVal, id: `${uid()}` }]);
       setInputVal("");
     }
   };

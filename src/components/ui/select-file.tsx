@@ -1,3 +1,4 @@
+import { uid } from "@/utils/constants";
 import { msg } from "@/utils/types";
 import { useState } from "react";
 import { useDropzone } from "react-dropzone";
@@ -26,7 +27,7 @@ export const SelectFile = ({
     onDrop: (acceptedFiles: FileInfo[]) => {
       if (acceptedFiles.length > 1)
         alert("You cannot bulk upload more than 10 files at a time");
-      setMsgs([...msgs, { file: acceptedFiles[0] }]);
+      setMsgs([...msgs, { file: acceptedFiles[0], id: `${uid()}` }]);
     },
   });
 

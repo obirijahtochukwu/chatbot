@@ -36,7 +36,7 @@ export const Interaction = ({
           >
             Edit
           </div>
-          <div className="px-8 py-3 cursor-pointer bg-red-600 bg-opacity-10 justify-center items-center gap-2.5 flex leading-[18px] text-md text-red-600  font-semibold font-mulish">
+          <div className="px-8 py-3 bg-red-600 bg-opacity-10 justify-center items-center gap-2.5 flex leading-[18px] opacity-50 cursor-not-allowed text-md text-red-600  font-semibold font-mulish">
             Delete
           </div>
         </div>
@@ -49,9 +49,9 @@ export const Interaction = ({
         <div className="w-[0.50px] h-[57px] bg-primary" />
         <div
           onClick={() => setNewMessage(!newMessage)}
-          className="w-[45px] cursor-pointer h-[45px] hover:shadow-lg duration-100 bg-white flex items-center justify-center rounded-[200px] text-primary relative text-xl shadow"
+          className="w-[45px] cursor-auto h-[45px] hover:shadow-lg duration-100 bg-white flex items-center justify-center rounded-[200px] text-primary relative text-xl shadow"
         >
-          + {newMessage ? <BotUser setModel={setModel} /> : null}
+          +
         </div>
         <div className="w-[0.50px] h-[57px] bg-primary" />
       </footer>

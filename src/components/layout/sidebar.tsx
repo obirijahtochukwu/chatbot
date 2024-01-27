@@ -16,6 +16,10 @@ export default function Sidebar() {
   // JSON.parse(localStorage.getItem("story_url"));
   const params: Params = useParams();
 
+  const _params = `${params.slug?.length > 0 && params.slug[0]}/${
+    params.slug?.length > 0 && params.slug[1]
+  }`;
+
   const pages = [
     {
       icon: (
@@ -35,21 +39,10 @@ export default function Sidebar() {
     },
     {
       icon: (
-        <Icons.story
-          color={
-            url ===
-            `/story/${params.slug?.length > 0 && params.slug[0]}/${
-              params.slug?.length > 0 && params.slug[1]
-            }`
-              ? "#fff"
-              : "#000"
-          }
-        />
+        <Icons.story color={url == `/story/${_params}` ? "#fff" : "#000"} />
       ),
       title: "story",
-      path: `/story/${params.slug?.length > 0 && params.slug[0]}/${
-        params.slug?.length > 0 && params.slug[1]
-      }`,
+      path: `/story/${_params}`,
       disable: showTab ? true : false,
     },
     {
@@ -57,39 +50,35 @@ export default function Sidebar() {
         <Icons.component color={url.includes("/components") ? "#fff" : ""} />
       ),
       title: "components",
-      path: `/story/${params}/components`,
+      path: `/components/${_params}`,
       disable: showTab ? true : false,
     },
     {
       icon: (
         <Icons.history
-          color={url === `/story/${params}/train-history` ? "#fff" : ""}
+          color={url === `/train-history/${_params}` ? "#fff" : ""}
         />
       ),
       title: "Train history",
-      path: `/story/${params}/train-history`,
+      path: `/train-history/${_params}`,
       disable: showTab ? true : false,
     },
     {
       icon: (
-        <Icons.chat
-          color={url === `/story/${params}/chat-history` ? "#fff" : ""}
-        />
+        <Icons.chat color={url === `/chat-history/${_params}` ? "#fff" : ""} />
       ),
       title: "Chat history",
-      path: `/story/${params}/chat-history`,
+      path: `/chat-history/${_params}`,
       disable: showTab ? true : false,
     },
     {
       icon: (
         <Icons.settings
-          color={
-            url.includes(`/story/${params}/client-configuration`) ? "#fff" : ""
-          }
+          color={url.includes(`/client-configuration/${_params}`) ? "#fff" : ""}
         />
       ),
       title: "Client configuration",
-      path: `/story/${params}/client-configuration`,
+      path: `/client-configuration/${_params}`,
       disable: showTab ? true : false,
     },
     {

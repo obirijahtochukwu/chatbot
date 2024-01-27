@@ -5,10 +5,8 @@ import { delete_msg } from "@/utils/functions";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "next/navigation";
 import Media from "../../media";
-import AddBot from "./add-bot-msg";
-import EditUserMsg from "./edit-user-msg";
-import EditBotMsg from "./edit-bot-msg";
-import AddUser from "./add-user-msg";
+import EditUserMsg from "../custom/edit-user-msg";
+import EditBotMsg from "../custom/edit-bot-msg";
 
 export const Interaction = ({
   interaction,
@@ -102,14 +100,12 @@ export const Interaction = ({
           onClick={() => setNewMessage(!newMessage)}
           className="w-[45px] cursor-pointer h-[45px] hover:shadow-lg duration-100 bg-white flex items-center justify-center rounded-[200px] text-primary relative text-xl shadow"
         >
-          + {newMessage ? <BotUser setModel={setModel} /> : null}
+          + {newMessage ? <BotUser setModel={setEditModel} /> : null}
         </div>
         <div className="w-[0.50px] h-[57px] bg-primary" />
       </footer>
 
       {/* <---------- modals & more ----------> */}
-      <AddUser {...props} />
-      <AddBot {...props} />
       <EditUserMsg {...props} deleteMsg={deleteMsg} />
       <EditBotMsg {...props} deleteMsg={deleteMsg} />
     </main>

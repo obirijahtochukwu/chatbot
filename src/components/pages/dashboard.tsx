@@ -7,6 +7,7 @@ import { addChatbot } from "@/redux/slice";
 import { Toast } from "../ui/toast";
 import CreateBot from "../ui/create-bot";
 import { chatbot } from "@/utils/types";
+import { uid } from "@/utils/constants";
 
 export default function Dashboard() {
   const [modal, setModal] = useState(false);
@@ -79,8 +80,14 @@ export default function Dashboard() {
 }
 
 const interactions = [
-  { name: "bot", messages: [{ text: "Hi How canhh I help you?" }] },
   {
+    id: `${uid()}`,
+    name: "bot",
+    messages: [{ text: "Hi How canhh I help you?" }],
+    component: "Component B",
+  },
+  {
+    id: `${uid()}`,
     name: "user",
     messages: [
       { text: "What time is the next event?" },
@@ -88,16 +95,34 @@ const interactions = [
       { text: "When is the next event?" },
       { text: "When" },
     ],
+    component: "Component C",
   },
+  // {
+  //   id: `${uid()}`,
+  //   name: "bot",
+  //   messages: [{ text: "Hi How canhh I help you?" }],
+  //   component: "Component A",
+  // },
+  // {
+  //   id: `${uid()}`,
+  //   name: "user",
+  //   messages: [
+  //     { text: "What time is the next event?" },
+  //     { text: "When will be holded the event?" },
+  //     { text: "When is the next event?" },
+  //     { text: "When" },
+  //   ],
+  //   component: "Component F",
+  // },
 ];
 
 export const stories = [
   { name: "Story A", template: "Q&R", interactions },
   // { name: "Story B", type: "Q&A", interactions },
   // { name: "Story C", type: "Rule", interactions },
-  { name: "Story D", type: "Custom", interactions: [] },
+  { name: "Story D", template: "Custom", interactions: [] },
   // { name: "Story E", type: "Q&A", interactions },
-  // { name: "Story F", type: "Rule", interactions },
+  { name: "Story F", template: "Rule", interactions: [] },
 ];
 
 // const chatbots = [

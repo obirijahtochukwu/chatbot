@@ -1,9 +1,22 @@
-import { FileInfo } from "@/utils/types";
+import { FileInfo, msg } from "@/utils/types";
 import React from "react";
+import { Icons } from "./icons";
 
-export default function Media({ file }: { file: FileInfo | any }) {
+export default function Media({
+  file,
+  id,
+  msgs,
+  setMsgs,
+}: { msgs?: msg[]; setMsgs?: React.Dispatch<msg[]> } & msg) {
+  const handleDelete = (id?: string) => {
+    //@ts-ignore
+    const _msgs = msgs.filter((msg) => msg.id != id);
+    //@ts-ignore
+    setMsgs(_msgs);
+  };
+
   return (
-    <section className="flex gap-2 items-start">
+    <section key={URL.createObjectURL(file)} className="flex gap-2 items-start">
       <input
         id="vue-checkbox"
         type="checkbox"
@@ -12,7 +25,7 @@ export default function Media({ file }: { file: FileInfo | any }) {
       />
       {file?.type.includes("image") ? (
         <div className="">
-          <label className="font-mulish leading-0 mb-1 font-normal text-primary text-md capitalize">
+          <label className="font-mulish relative -top-1 leading-0 mb-1 font-normal text-primary text-md capitalize">
             image
           </label>
           <img
@@ -22,7 +35,7 @@ export default function Media({ file }: { file: FileInfo | any }) {
         </div>
       ) : (
         <div className="">
-          <label className="font-mulish leading-0 mb-1 font-normal text-primary text-md capitalize">
+          <label className="font-mulish relative -top-1 leading-0 mb-1 font-normal text-primary text-md capitalize">
             Video
           </label>
           <iframe
@@ -35,6 +48,10 @@ export default function Media({ file }: { file: FileInfo | any }) {
           />
         </div>
       )}
+      <Icons.delete
+        onClick={() => handleDelete(id)}
+        className="h-5 ml-auto  cursor-pointer"
+      />
     </section>
   );
 }

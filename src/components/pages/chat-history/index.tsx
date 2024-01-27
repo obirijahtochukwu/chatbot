@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Icons } from "../../ui/icons";
 import { chat, component_state, msg } from "@/utils/types";
-import AddUser from "../../ui/add-user";
+// import AddUser from "../../ui/add-user";
 import { chat_history, headers } from "@/utils/constants";
 import { Buttons } from "../../ui/buttons";
 
@@ -20,7 +20,7 @@ export default function ChatHistory() {
       <div className="text-primary mb-5 font-body text-[26px] font-medium">
         {chatbot?.name} / {story?.name} / Train historyijkb
       </div>
-      ll
+
       <BotDialog />
     </main>
   );

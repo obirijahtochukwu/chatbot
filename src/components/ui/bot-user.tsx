@@ -15,6 +15,7 @@ export default function BotUser({
       {options.map(({ name, img }: { name: string; img: string }) => {
         return (
           <div
+            key={name}
             onClick={() => setModel(name)}
             className="w-[100px] flex justify-center items-center flex-col bg-neutral h-[100px] gap-1"
           >

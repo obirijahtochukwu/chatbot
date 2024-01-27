@@ -1,11 +1,10 @@
 import { component_state, interaction, story } from "@/utils/types";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Interaction } from "./interactions";
-import AddUser from "./add-user-msg";
-import AddBot from "./add-bot-msg";
-// import AddUser from "./add-user";
+import AddUser from "../custom/add-user-msg";
+import AddBot from "../custom/add-bot-msg";
 
-export const Custom = ({ story }: { story: story }) => {
+export const Rule = ({ story }: { story: story }) => {
   const [newMessage, setNewMessage] = useState(false);
   const [model, setModel] = useState("");
   const [component, setComponent] = useState<component_state>({
@@ -17,10 +16,6 @@ export const Custom = ({ story }: { story: story }) => {
     { name: "user", img: "/media/story/user icon.svg" },
   ];
 
-  useEffect(() => {
-    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-  }, [story.interactions]);
-
   const props = { story, model, setModel, component, setComponent };
 
   return (
@@ -30,9 +25,10 @@ export const Custom = ({ story }: { story: story }) => {
           story?.interactions.length < 2 ? "flex" : "hidden"
         } w-fit top-full left-[calc((100%-299px)/2)] gap-6 h-fit px-[41px] py-[25px] bg-white shadow`}
       >
-        {options.map(({ name, img }: { name: string; img: string }) => {
-          return (
+        {options.map(
+          ({ name, img }: { name: string; img: string }, idx: number) => (
             <div
+              key={idx}
               onClick={() => setModel(name)}
               className="w-[100px] flex justify-center items-center flex-col bg-neutral h-[100px] gap-1"
             >
@@ -41,8 +37,8 @@ export const Custom = ({ story }: { story: story }) => {
                 {name}
               </div>
             </div>
-          );
-        })}
+          )
+        )}
       </main>
       {story?.interactions.map((interaction: interaction, idx: number) => {
         const props = {

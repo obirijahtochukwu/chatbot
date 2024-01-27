@@ -5,6 +5,8 @@ import { useState } from "react";
 import { createStory } from "@/redux/slice";
 import { useParams, useRouter } from "next/navigation";
 import { stories } from "@/components/pages/dashboard";
+import { uid } from "@/utils/constants";
+import { toast } from "react-toastify";
 
 export default function CreateStory({
   isModal,
@@ -20,7 +22,6 @@ export default function CreateStory({
   const chatbots = useSelector((state: any) => state.context.chatbots);
   const params = useParams();
 
-  const { toast, ToastContainer } = Toast();
   const [inputVal, setInputVal] = useState("");
   const dispatch = useDispatch();
   const router = useRouter();
@@ -39,10 +40,10 @@ export default function CreateStory({
       bot.name == newArray.name ? newArray : bot
     );
 
-    toast("Story created!");
+    toast.success("Story created!");
     dispatch(createStory(chats));
     setInputVal("");
-    // setIsModal(false);
+    setIsModal(false);
     router.push(`/story/${params.slug}/${stories.length - 1}`);
   };
 
@@ -57,7 +58,6 @@ export default function CreateStory({
         isModal ? "z-10 visible" : "z-[-1] invisible"
       }`}
     >
-      <ToastContainer />
       <form
         onSubmit={handleSubmit}
         className={`px-6 py-5 w-96 bg-white rounded-[5px] relative flex flex-col gap-3 pt-3 pb-8 shadow-lg `}
@@ -102,3 +102,23 @@ export default function CreateStory({
     </main>
   );
 }
+
+const interactions = [
+  {
+    id: `${uid()}`,
+    name: "bot",
+    messages: [{ text: "Hi How canhh I help you?" }],
+    component: "Component B",
+  },
+  {
+    id: `${uid()}`,
+    name: "user",
+    messages: [
+      { text: "What time is the next event?" },
+      { text: "When will be holded the event?" },
+      { text: "When is the next event?" },
+      { text: "When" },
+    ],
+    component: "Component C",
+  },
+];
