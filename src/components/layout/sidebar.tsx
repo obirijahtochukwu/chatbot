@@ -7,13 +7,18 @@ import Link from "next/link";
 import { logout } from "@/utils/functions";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 
-export default function Sidebar() {
-  const pathname = usePathname();
+export default function Sidebar({
+  isSidebar,
+  setIsSidebar,
+}: {
+  isSidebar: boolean;
+  setIsSidebar: React.Dispatch<boolean>;
+}) {
   const [url, setUrl] = useState("");
+
+  const pathname = usePathname();
   const showTab = useSelector((state: any) => state.context.activePage);
-  // const params =
-  // typeof window != "undefined" &&
-  // JSON.parse(localStorage.getItem("story_url"));
+  const router = useRouter();
   const params: Params = useParams();
 
   const _params = `${params.slug?.length > 0 && params.slug[0]}/${
@@ -95,24 +100,42 @@ export default function Sidebar() {
     },
   ];
 
-  const router = useRouter();
-
   useEffect(() => {
     setUrl(pathname);
   }, [url, pathname]);
 
+  useEffect(() => {
+    if (isSidebar) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+  }, [isSidebar]);
+
   return (
-    <aside className="w-56 sticky z-10 top-[7px] left-0">
-      <div className="w-full h-12 pl-5 pr-6 py-3 bg-neutral rounded-full justify-start items-center gap-2.5 mb-8 flex">
-        <Icons.search className="w-6 h-6 relative"></Icons.search>
+    <aside
+      className={`md:w-56 md:sticky duration-200 backdrop-blur-[8px] fixed max-md:p-6 max-md:h-screen max-md:w-screen z-10 md:top-[7px] top-0 left-0 ${
+        isSidebar ? "translate-x-0 " : "max-md:-translate-x-96"
+      }`}
+    >
+      <div
+        onClick={() => setIsSidebar(false)}
+        className="ml-auto w-fit md:hidden rounded-full bg-primary bg-opacity-10 p-3 mb-5 cursor-pointer"
+      >
+        <Icons.close className="" />
+      </div>
+      <div className="w-full h-12 pl-5 pr-6 py-3 bg-neutral rounded-full justify-start items-center gap-2.5 mb-8 flex overflow-hidden">
+        <div>
+          <Icons.search className="w-6 h-6 relative"></Icons.search>
+        </div>
         <input
           placeholder="Buscador"
           type="text"
-          className="focus:outline-none bg-inherit text-primary text-opacity-70 text-xs"
+          className="focus:outline-none bg-inherit text-primary text-opacity-70 text-base md:text-xs"
         />
       </div>
 
-      <main className="w-56 h-64 flex-col justify-start items-end gap-5 inline-flex">
+      <main className="md:w-56 w-full h-64 flex-col justify-start items-end gap-5 inline-flex">
         {pages.map(
           ({ icon, title, path, disable }) =>
             disable && (
@@ -128,7 +151,9 @@ export default function Sidebar() {
                 }`}
               >
                 {icon}
-                <div className="capitalize text-xs font-semibold">{title}</div>
+                <div className="capitalize text-base md:text-xs font-semibold">
+                  {title}
+                </div>
               </div>
             )
         )}
@@ -137,7 +162,9 @@ export default function Sidebar() {
           className={`w-full pl-6 pr-2 py-3.5 rounded-full justify-start items-center duration-300 gap-3.5 inline-flex hover:shadow text-primary cursor-pointer`}
         >
           <Icons.logout />
-          <div className="capitalize text-xs font-semibold">logout</div>
+          <div className="capitalize !text-base md:text-xs font-semibold">
+            logout
+          </div>
         </div>
       </main>
     </aside>

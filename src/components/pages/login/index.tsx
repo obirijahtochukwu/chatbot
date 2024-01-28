@@ -52,14 +52,13 @@ export default function Login() {
             <input
               type={name}
               required
-              // autuFocus
               placeholder={placeholder}
               //@ts-ignore
               value={form[name]}
               onChange={(e: any) =>
                 setForm({ ...form, [name]: e.target.value })
               }
-              className="h-12 border-2 w-full border-white focus:outline-secondary border-opacity-70 rounded flex items-center px-4 text-lg text-white"
+              className="h-12 border-2 w-full border-white focus:outline-secondary border-opacity-70 rounded flex items-center px-4 text-lg !text-primary"
             />
           </div>
         ))}
